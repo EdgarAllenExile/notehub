@@ -219,9 +219,7 @@ Not all rainbows and lollypops. Factory patters do have distinct drawbacks.
 
 An abstract factory pattern allows the creation of families of related objects without specifying their concrete class.
 
-
 Abstract factories can be implemented as singletons.
-
 
 ### When to use
 
@@ -230,8 +228,7 @@ Use abstract factories when the code needs to work with various families of rela
 - The abstract factory pattern provides an interface for creating objects from each class of the 'family'.
   - Provided this interface is used, you do not need to worry about creating incorrect variants.
 
-Should also be used when an existing factory pattern looks to be dealing with multiple product types. 
-
+Should also be used when an existing factory pattern looks to be dealing with multiple product types.
 
 ### Implementation
 
@@ -242,11 +239,9 @@ Should also be used when an existing factory pattern looks to be dealing with mu
 5. Create factory initialization code somewhere in the app. It should instantiate one of the concrete factory classes, depending on the application configuration or the current environment. Pass this factory object to all classes that construct products.
 6. Scan through the code and find all direct calls to product constructors. Replace them with calls to the appropriate creation method on the factory object.
 
-
 ## Builder pattern
 
 A builder is a pattern that creates complex objects in different steps. This allows for the creation of different types and representations of objects using the same construction code.
-
 
 Builder patterns should be used for complex objects, where you might need a step-by-step construction. This allows the avoidance of using constructors with multiple parameters.
 
@@ -259,7 +254,6 @@ There are five distinct parts of a builder design pattern.
 3. The ConcreteBuilder. Provides specific implementations for each part of the product. Implements the Builder interface.
 4. The Director. Manages the construction process. Does not know specifics of the construction method, rather provides a highlevel interface for constructing and managing the product.
 5. The Client. Initiates the construction of the object. Creates the builder object and passes it to the director.
-
 
 #### Pseudo Code
 
@@ -330,34 +324,25 @@ int main() {
 	RAM Specs = RAM Specs"
 ```
 
-
-
 ## Prototype pattern
 
 Prototype patterns lets you copy existing objects, without creating a dependancy on their associated classes.
 
+In situations in which you need a direct copy of an object, the alternative would be to create a new instance of that object and copy over aech fields. However some fields may be private or otherwise not visible. Additionally, this creates new dependancies and reliances within the code.
 
-In situations in which you need a direct copy of an object, the alternative would be to create a new instance of that object and copy over aech fields. However some fields may be private or otherwise not visible. Additionally, this creates new dependancies and reliances within the code. 
-
-
-
-The protodtype pattern can be used when interfacing with third party code. The concrete classes of objects being passed in are unknown and cannot be depended on. 
-
+The protodtype pattern can be used when interfacing with third party code. The concrete classes of objects being passed in are unknown and cannot be depended on.
 
 Can also reduce the number of subclasses, if those subclasses only differ in teh way they init their respecitve objects. Promotes DRYness.
 
-
 ### Implementation
 
-The prototype pattern has each class of object that supports cloning, implement an interface that provides a clone method. 
+The prototype pattern has each class of object that supports cloning, implement an interface that provides a clone method.
 
-
-The actual code is usually very simple. 
+The actual code is usually very simple.
 
 - A new instance of the current class is created.
 - All fields from the old object are copied in to the new object.
   - NB: This even includes private fields in most instances as they are accessible from objects within the same class.
-
 
 Actual overview is as follows:
 
@@ -365,11 +350,9 @@ Actual overview is as follows:
 2. Prototype class must define the alternative constructor that accepts an object of that class as an argument. The constructor then copies all fields into the newly created instance.
 3. The cloning method usually then just runs the new operator. Each class must explicitly override the cloning method, else the cloning method may init a version of the parent method.
 
-
 ### Cons
 
-Can be difficult to clone objects with circular references. 
-
+Can be difficult to clone objects with circular references.
 
 # Structural Design Patterns
 
@@ -385,14 +368,11 @@ Common structural design patterns include:
 - Proxy pattern
 - Flyweight pattern
 
-
 ## Adapter pattern
 
-An adapter pattern allows objects with incompatible interfaces to collaborate. 
+An adapter pattern allows objects with incompatible interfaces to collaborate.
 
-
-An adapter is a special object that converts the interface of one object so that annother interface can understand it. 
-
+An adapter is a special object that converts the interface of one object so that annother interface can understand it.
 
 ## Bridge pattern
 
@@ -415,6 +395,8 @@ An adapter is a special object that converts the interface of one object so that
 
 
 ## Flyweight pattern
+
+
 
 # Behavioural Design Patterns
 
@@ -442,11 +424,7 @@ Common behavioural design patterns include:
 
 
 
-
-
 ## State pattern
-
-
 
 
 
@@ -454,11 +432,7 @@ Common behavioural design patterns include:
 
 
 
-
-
 ## Chain of responsibility
-
-
 
 
 
@@ -466,17 +440,11 @@ Common behavioural design patterns include:
 
 
 
-
-
 ## Interpreter pattern
 
 
 
-
-
 ## Visitor pattern
-
-
 
 
 
