@@ -5,7 +5,6 @@
 - Design Patterns are typical implemented solutions to commonly occouring problems.
 - They are akin to blueprints that can be adapted and implemented to suit the needs of the progammer and code.
 
-
 ### Designs
 
 - Patterns are designed to be predictable, repeatable and understandbale.
@@ -16,7 +15,6 @@
   - Structure, classes of the pattern and how they are related
   - Code eample, showing an implementation of the pattern
 
-
 ### Types of Patterns
 
 There are three types of design patterns:
@@ -24,7 +22,6 @@ There are three types of design patterns:
 - Creational patterns. Patterns that describe methods to create objects.
 - Structural patterns. Patterns that describe how to assemble objects and classes into larger structures.
 - Behavioural patters. Patterms that describe the communication and responsibility sharing between objects.
-
 
 ## Design Pattern Use Case
 
@@ -45,8 +42,6 @@ Design patterns are good for a variety of reasons.
 * Interaction
   * Design patterns provide a common language and a shared understanding among team members. They enable developers to communicate effectively and collaborate on software projects by referring to well-known design solutions.
 
-
-
 # Creational Design Patterns
 
 Creational design patterns ensure that a system operates independantly of how its objects are created, composed and represented. ????
@@ -59,23 +54,17 @@ Common creational design patterns include:
 - Builder pattern
 - Prototype pattern
 
-
-
-
 ## Singleton pattern
 
 A Singleton ensures that there is only ever one instance of a class and provides an application with global access to this object.
 
 - Singletons are commonly used to control access to a shared resource, such as a database or file.
 
-
-
 It works by creating an object, then effectively calling that object when going to creating another instance of that object.
 
 - This is not possible with regular constructor methods because they must return new objects by design.
 
-
-Additionally, Singletons effectively create global variables that cannot be overwritten by additional code (like other global variables). 
+Additionally, Singletons effectively create global variables that cannot be overwritten by additional code (like other global variables).
 
 ### When to use
 
@@ -92,7 +81,6 @@ Singletons have two common stages:
 - Use a static creation method to 'act as' a constructor. This will inturn call the above noted private constructor and save it into the static field.
   - Allowing all subsequent calls to return this cached object.
 
-
 #### Specific implementation steps
 
 1. Add a private static field to the class for storing the singleton instance.
@@ -100,7 +88,6 @@ Singletons have two common stages:
 3. Implement “lazy initialization” inside the static method. It should create a new object on its first call and put it into the static field. The method should always return that instance on all subsequent calls.
 4. Make the constructor of the class private. The static method of the class will still be able to call the constructor, but not the other objects.
 5. Go over the client code and replace all direct calls to the singleton's constructor with calls to its static creation method.
-
 
 #### Example Pseudo Code
 
@@ -128,7 +115,6 @@ class Application
 
 ```
 
-
 ### Cons
 
 There are some issues with singletons
@@ -137,11 +123,9 @@ There are some issues with singletons
 - Can be problematic in multi-threaded environments
 - Can be hard to test apparently
 
-
 ## Factory method
 
 Factory methods provide an interface for creating objects. This 'super class' will allow 'sub-classes' to alter the type of object that will be created. Object creation is housed in a seperate method, promoting loose coupling between creation method and resulting object.  Useful when creating a varied array of objects, enabling increased flexibility at creation time.
-
 
 ### When to use
 
@@ -154,7 +138,6 @@ Factory methods provide an interface for creating objects. This 'super class' wi
   - Factories can be used to encapsulate configuration logic and allow clients to customize the creation process by providing params to the factory method
 - Promotes code reusability because the creation of objects is centralised
 
-
 ### Implementation
 
 In general, factory methods follow the same structure
@@ -164,8 +147,7 @@ In general, factory methods follow the same structure
 3. Product. The interface or abstract class for the objects that the factory method creates. the Product defines the common interface for all objects that the factory method can create.
 4. Concrete product. The actual objects that the factory creates. Each concrete product class must implement or extend the Product interface or class.
 
-
-### Example Pseudo Code
+#### Example Pseudo Code
 
 ```
 // Library classes
@@ -220,12 +202,10 @@ class Client {
 
 I am not 100% on the above. Geeks for Geeks changed around their naming conventions and I am confused. They do say the following though:
 
-
 * **`Vehicle`** serves as the Product interface, defining the common method **`printVehicle()`** that all concrete products must implement.
 * **`TwoWheeler`** and **`FourWheeler`** are concrete product classes representing different types of vehicles, implementing the **`printVehicle()`** method.
 * **`>VehicleFactory`** acts as the Creator interface (Factory Interface) with a method **`<strong>createVehicle()`** representing the factory method.
 * **`TwoWheelerFactory`** and **`FourWheelerFactory`** are concrete creator classes (Concrete Factories) implementing the **`VehicleFactory`** interface to create instances of specific types of vehicles.
-
 
 ### Cons
 
@@ -235,15 +215,160 @@ Not all rainbows and lollypops. Factory patters do have distinct drawbacks.
 - Tight coupling between product pairs. Changes to concrete creators still require changes to the concrete product.
 - Testing can be annoying.
 
-
 ## Abstract factory pattern
+
+An abstract factory pattern allows the creation of families of related objects without specifying their concrete class.
+
+
+Abstract factories can be implemented as singletons.
+
+
+### When to use
+
+Use abstract factories when the code needs to work with various families of related products, but it should not depend on the concrete classes of those products.
+
+- The abstract factory pattern provides an interface for creating objects from each class of the 'family'.
+  - Provided this interface is used, you do not need to worry about creating incorrect variants.
+
+Should also be used when an existing factory pattern looks to be dealing with multiple product types. 
+
+
+### Implementation
+
+1. Stratify distinct product types versus variants of these products.
+2. Declare abstract product interfaces for all product types. Then make all concrete product classes implement these interfaces.
+3. Declare the abstract factory interface with a set of creation methods for all abstract products.
+4. Implement a set of concrete factory classes, one for each product variant.
+5. Create factory initialization code somewhere in the app. It should instantiate one of the concrete factory classes, depending on the application configuration or the current environment. Pass this factory object to all classes that construct products.
+6. Scan through the code and find all direct calls to product constructors. Replace them with calls to the appropriate creation method on the factory object.
 
 
 ## Builder pattern
 
+A builder is a pattern that creates complex objects in different steps. This allows for the creation of different types and representations of objects using the same construction code.
+
+
+Builder patterns should be used for complex objects, where you might need a step-by-step construction. This allows the avoidance of using constructors with multiple parameters.
+
+### Implementation
+
+There are five distinct parts of a builder design pattern.
+
+1. The Product. This is the complex object end result of the builder patter. Typically a class with attributes representing the different parts constructed by the builder.
+2. The Builder. Is an interface (or abstract class) that declares the construction steps for building a complex object. Typically includes methods for constructing the individual parts of the object. Since this is an interface, the builder allows for the creation of different concrete builders that will produce variants of The Product.
+3. The ConcreteBuilder. Provides specific implementations for each part of the product. Implements the Builder interface.
+4. The Director. Manages the construction process. Does not know specifics of the construction method, rather provides a highlevel interface for constructing and managing the product.
+5. The Client. Initiates the construction of the object. Creates the builder object and passes it to the director.
+
+
+#### Pseudo Code
+
+```
+// Product
+public class Computer 
+{  
+	void setCPU(string cpu) { 
+		_cpu = cpu
+	}  
+	void setRAM(string ram) {
+		_ram = ram
+	}  
+	void displayInfo(){
+	"Computer Config 
+	CPU Specs = ${_cpu}
+	RAM Specs = ${_ram}"
+	}
+
+	private string _cpu  
+	private string _ram
+}
+
+// Builder
+class builder {
+	public void buildCPU() = 0
+	public void buildRAM() = 0
+	public Computer getResult() = 0
+}
+
+//ConcreteBuilder
+class GamngComputerBuilder : Builder {
+	private Computer _computer
+	public void buildCPU() override {
+	_computer.setCPU("CPU Type")
+	}
+	public void buildRAM() override {
+	_computer.setRAM("RAM Type")
+	}
+	Computer getResult override {
+	return _computer;
+	}
+}
+
+// Director
+class ComputerDirector {
+	public void construct(Builder builder) {
+	builder.buildCPU()
+	builder.buildRAM()
+	}
+}
+
+// Client
+int main() {
+	GamingComputerBuilder gamingBuilder
+	ComputerDirector director
+
+	director.constructor(gamingBuilder)
+	Computer gamingComputer = gamingBuilder.getResult()
+
+	gamingComputer.displayInfo();
+	return 0
+}
+
+// Ideally the console would print out the CPU specs as follows
+	"Computer Config 
+	CPU Specs = CPU Specs
+	RAM Specs = RAM Specs"
+```
+
+
 
 ## Prototype pattern
 
+Prototype patterns lets you copy existing objects, without creating a dependancy on their associated classes.
+
+
+In situations in which you need a direct copy of an object, the alternative would be to create a new instance of that object and copy over aech fields. However some fields may be private or otherwise not visible. Additionally, this creates new dependancies and reliances within the code. 
+
+
+
+The protodtype pattern can be used when interfacing with third party code. The concrete classes of objects being passed in are unknown and cannot be depended on. 
+
+
+Can also reduce the number of subclasses, if those subclasses only differ in teh way they init their respecitve objects. Promotes DRYness.
+
+
+### Implementation
+
+The prototype pattern has each class of object that supports cloning, implement an interface that provides a clone method. 
+
+
+The actual code is usually very simple. 
+
+- A new instance of the current class is created.
+- All fields from the old object are copied in to the new object.
+  - NB: This even includes private fields in most instances as they are accessible from objects within the same class.
+
+
+Actual overview is as follows:
+
+1. Create prototype interface and declare clone method.
+2. Prototype class must define the alternative constructor that accepts an object of that class as an argument. The constructor then copies all fields into the newly created instance.
+3. The cloning method usually then just runs the new operator. Each class must explicitly override the cloning method, else the cloning method may init a version of the parent method.
+
+
+### Cons
+
+Can be difficult to clone objects with circular references. 
 
 
 # Structural Design Patterns
@@ -255,29 +380,38 @@ Common structural design patterns include:
 - Adapter pattern
 - Bridge pattern
 - Composite pattern
-- decorator pattern
+- Decorator pattern
 - Facade pattern
 - Proxy pattern
 - Flyweight pattern
 
 
-
 ## Adapter pattern
+
+An adapter pattern allows objects with incompatible interfaces to collaborate. 
+
+
+An adapter is a special object that converts the interface of one object so that annother interface can understand it. 
 
 
 ## Bridge pattern
 
 
+
 ## Composite pattern
+
 
 
 ## Decorator pattern
 
 
+
 ## Facade pattern
 
 
+
 ## Proxy pattern
+
 
 
 ## Flyweight pattern
@@ -300,3 +434,56 @@ Common behavioural design patterns include:
 - Visitor pattern
 - Mediator pattern
 - Momento pattern
+
+
+## Observer pattern
+
+
+
+## Strategy pattern
+
+
+
+
+
+## State pattern
+
+
+
+
+
+## Command pattern
+
+
+
+
+
+## Chain of responsibility
+
+
+
+
+
+## Template pattern
+
+
+
+
+
+## Interpreter pattern
+
+
+
+
+
+## Visitor pattern
+
+
+
+
+
+## Mediator pattern
+
+
+
+## Momento pattern
