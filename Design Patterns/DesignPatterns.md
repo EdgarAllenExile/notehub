@@ -416,8 +416,6 @@ An adapter is a special object that converts the interface of one object so that
 
 ## Flyweight pattern
 
-
-
 # Behavioural Design Patterns
 
 Behavioural design patterns are concerned with algorithims and the sharing of responsibility between objects.
