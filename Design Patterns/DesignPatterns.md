@@ -5,7 +5,7 @@
 - Design Patterns are typical implemented solutions to commonly occouring problems.
 - They are akin to blueprints that can be adapted and implemented to suit the needs of the progammer and code.
 
-### Designs 
+### Designs
 
 - Patterns are designed to be predictable, repeatable and understandbale.
 - They are described formally to in similar ways to ensure that they are easily understook and implemented.
