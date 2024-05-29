@@ -5,7 +5,7 @@
 - Design Patterns are typical implemented solutions to commonly occouring problems.
 - They are akin to blueprints that can be adapted and implemented to suit the needs of the progammer and code.
 
-### Designs 
+### Designs
 
 - Patterns are designed to be predictable, repeatable and understandbale.
 - They are described formally to in similar ways to ensure that they are easily understook and implemented.
@@ -147,7 +147,7 @@ In general, factory methods follow the same structure
 3. Product. The interface or abstract class for the objects that the factory method creates. the Product defines the common interface for all objects that the factory method can create.
 4. Concrete product. The actual objects that the factory creates. Each concrete product class must implement or extend the Product interface or class.
 
-### Example Pseudo Code
+#### Example Pseudo Code
 
 ```
 // Library classes
@@ -217,9 +217,142 @@ Not all rainbows and lollypops. Factory patters do have distinct drawbacks.
 
 ## Abstract factory pattern
 
+An abstract factory pattern allows the creation of families of related objects without specifying their concrete class.
+
+Abstract factories can be implemented as singletons.
+
+### When to use
+
+Use abstract factories when the code needs to work with various families of related products, but it should not depend on the concrete classes of those products.
+
+- The abstract factory pattern provides an interface for creating objects from each class of the 'family'.
+  - Provided this interface is used, you do not need to worry about creating incorrect variants.
+
+Should also be used when an existing factory pattern looks to be dealing with multiple product types.
+
+### Implementation
+
+1. Stratify distinct product types versus variants of these products.
+2. Declare abstract product interfaces for all product types. Then make all concrete product classes implement these interfaces.
+3. Declare the abstract factory interface with a set of creation methods for all abstract products.
+4. Implement a set of concrete factory classes, one for each product variant.
+5. Create factory initialization code somewhere in the app. It should instantiate one of the concrete factory classes, depending on the application configuration or the current environment. Pass this factory object to all classes that construct products.
+6. Scan through the code and find all direct calls to product constructors. Replace them with calls to the appropriate creation method on the factory object.
+
 ## Builder pattern
 
+A builder is a pattern that creates complex objects in different steps. This allows for the creation of different types and representations of objects using the same construction code.
+
+Builder patterns should be used for complex objects, where you might need a step-by-step construction. This allows the avoidance of using constructors with multiple parameters.
+
+### Implementation
+
+There are five distinct parts of a builder design pattern.
+
+1. The Product. This is the complex object end result of the builder patter. Typically a class with attributes representing the different parts constructed by the builder.
+2. The Builder. Is an interface (or abstract class) that declares the construction steps for building a complex object. Typically includes methods for constructing the individual parts of the object. Since this is an interface, the builder allows for the creation of different concrete builders that will produce variants of The Product.
+3. The ConcreteBuilder. Provides specific implementations for each part of the product. Implements the Builder interface.
+4. The Director. Manages the construction process. Does not know specifics of the construction method, rather provides a highlevel interface for constructing and managing the product.
+5. The Client. Initiates the construction of the object. Creates the builder object and passes it to the director.
+
+#### Pseudo Code
+
+```
+// Product
+public class Computer 
+{  
+	void setCPU(string cpu) { 
+		_cpu = cpu
+	}  
+	void setRAM(string ram) {
+		_ram = ram
+	}  
+	void displayInfo(){
+	"Computer Config 
+	CPU Specs = ${_cpu}
+	RAM Specs = ${_ram}"
+	}
+
+	private string _cpu  
+	private string _ram
+}
+
+// Builder
+class builder {
+	public void buildCPU() = 0
+	public void buildRAM() = 0
+	public Computer getResult() = 0
+}
+
+//ConcreteBuilder
+class GamngComputerBuilder : Builder {
+	private Computer _computer
+	public void buildCPU() override {
+	_computer.setCPU("CPU Type")
+	}
+	public void buildRAM() override {
+	_computer.setRAM("RAM Type")
+	}
+	Computer getResult override {
+	return _computer;
+	}
+}
+
+// Director
+class ComputerDirector {
+	public void construct(Builder builder) {
+	builder.buildCPU()
+	builder.buildRAM()
+	}
+}
+
+// Client
+int main() {
+	GamingComputerBuilder gamingBuilder
+	ComputerDirector director
+
+	director.constructor(gamingBuilder)
+	Computer gamingComputer = gamingBuilder.getResult()
+
+	gamingComputer.displayInfo();
+	return 0
+}
+
+// Ideally the console would print out the CPU specs as follows
+	"Computer Config 
+	CPU Specs = CPU Specs
+	RAM Specs = RAM Specs"
+```
+
 ## Prototype pattern
+
+Prototype patterns lets you copy existing objects, without creating a dependancy on their associated classes.
+
+In situations in which you need a direct copy of an object, the alternative would be to create a new instance of that object and copy over aech fields. However some fields may be private or otherwise not visible. Additionally, this creates new dependancies and reliances within the code.
+
+The protodtype pattern can be used when interfacing with third party code. The concrete classes of objects being passed in are unknown and cannot be depended on.
+
+Can also reduce the number of subclasses, if those subclasses only differ in teh way they init their respecitve objects. Promotes DRYness.
+
+### Implementation
+
+The prototype pattern has each class of object that supports cloning, implement an interface that provides a clone method.
+
+The actual code is usually very simple.
+
+- A new instance of the current class is created.
+- All fields from the old object are copied in to the new object.
+  - NB: This even includes private fields in most instances as they are accessible from objects within the same class.
+
+Actual overview is as follows:
+
+1. Create prototype interface and declare clone method.
+2. Prototype class must define the alternative constructor that accepts an object of that class as an argument. The constructor then copies all fields into the newly created instance.
+3. The cloning method usually then just runs the new operator. Each class must explicitly override the cloning method, else the cloning method may init a version of the parent method.
+
+### Cons
+
+Can be difficult to clone objects with circular references.
 
 # Structural Design Patterns
 
@@ -230,14 +363,219 @@ Common structural design patterns include:
 - Adapter pattern
 - Bridge pattern
 - Composite pattern
-- decorator pattern
+- Decorator pattern
 - Facade pattern
 - Proxy pattern
 - Flyweight pattern
 
 ## Adapter pattern
 
+An adapter pattern allows objects with incompatible interfaces to collaborate.
+
+An adapter is a special object that converts the interface of one object so that annother interface can understand it. This can be useful in situations in which legacy parts of programs have been imported and still need to be used.
+
+Can also be used when you would like to reuse classes or components with interfaces that are incompatible with the interfaces expected by the existing code.
+
+Can also act as a bridge for making different interfaces work together correctly, can be especially helpful when using imported third party APIs or libraries which present with different inerfaces than the existing ones on the system.
+
+
+### Implementation
+
+There are four major components required for an adapter pattern:
+
+1. Target interface. The interface used by the Client and represents the set of operations that the client code can use.
+   1. It acts as the common interface that the client code interacts with
+2. Adaptee. The existing class or system with an incompatible interface that must be implemented
+   1. It acts as the class or system that the client code would like to use but cannot due to interface mismatch.
+3. Adaptor. A class that implements the target interface and internally uses an instance of the adaptee to make compatible.
+   1. It acts as the bridge adapting the interface of the adaptee to match the target interface.
+4. Client. The code that will use the target interface to interact with objects.
+   1. It is the code that benefits from the integration of the adaptee into the system through the adapter.
+
+
+When it gets down to it, the design pattern follows four man steps:
+
+1. Client request is initiated by calling a method on the adapter using the target interface
+2. The adaptor translates or maps the client's request into a form that the adaptee understands, using the adaptee's interface
+3. The adaptee performs the actual work based on the translated reques from the adapter
+4. The client receives the results of the call, remaining agnostic to the adapters presence or the specifics of the adaptee
+
+
+#### Example
+
+```
+
+
+// Adapter Design Pattern Example Code
+ 
+#include <iostream>
+ 
+// Target Interface
+class Printer {
+public:
+    virtual void print() = 0;
+};
+ 
+// Adaptee
+class LegacyPrinter {
+public:
+    void printDocument() {
+        std::cout << "Legacy Printer is printing a document." << std::endl;
+    }
+};
+ 
+// Adapter
+class PrinterAdapter : public Printer {
+private:
+    LegacyPrinter legacyPrinter;
+ 
+public:
+    void print() override {
+        legacyPrinter.printDocument();
+    }
+};
+ 
+// Client Code
+void clientCode(Printer& printer) {
+    printer.print();
+}
+ 
+int main() {
+    // Using the Adapter
+    PrinterAdapter adapter;
+    clientCode(adapter);
+ 
+    return 0;
+}
+```
+
+The expected output of this code would be "Legacy Printer is printing a document."
+
 ## Bridge pattern
+
+Similar to an adapter in intent, the bridge pattern seperates an abstraction from its implementation. This can promote loose coupling between class abstractions and implementations.	
+
+There are two parts to a Bridge design pattern abstraction and implementation. 
+
+- The bridge pattern allows both of these parts to be developed independantly of each other. The client code only needs to access the abstraction portion of the code without concerning itself with the implementation.
+- The abstraction is done in an interface or abstract class, with the implementor also being an interface or class.
+- The abstraction contains a reference to the implementor. Children of the abstraction are referred to as refined abstractions. Children of the implementer are concrete abstractions.
+
+
+You should use a bridge pattern because:
+
+- It decouples an abstraction from its implementation so that the two can vary independantly
+- You are developing a platform independant feature
+- Lets you stick an abstraction interface in
+
+
+### Implementation
+
+There are four elements involved when using a bridge pattern.
+
+1. Abstraction. This is the core of the bridge pattern and defines the crux. Contains a reference to the implementor.
+2. Refined abstraction. Extends the abstraction and digs into the finer details. Hides those details from the implementors.
+3. Implementor. Defines the interface for the implememtation classes. Does not need to correspond directly to the abstraction interface and can be very different.
+4. Concrete implementor. Implements the above implementor by providing the concrete implementor.
+
+
+#### Example 
+
+```
+// Java code to demonstrate
+// bridge design pattern
+
+// abstraction in bridge pattern
+abstract class Vehicle {
+	protected Workshop workShop1;
+	protected Workshop workShop2;
+
+	protected Vehicle(Workshop workShop1, Workshop workShop2)
+	{
+		this.workShop1 = workShop1;
+		this.workShop2 = workShop2;
+	}
+
+	abstract public void manufacture();
+}
+
+// Refine abstraction 1 in bridge pattern
+class Car extends Vehicle {
+	public Car(Workshop workShop1, Workshop workShop2)
+	{
+		super(workShop1, workShop2);
+	}
+
+	@Override
+	public void manufacture()
+	{
+		System.out.print("Car ");
+		workShop1.work();
+		workShop2.work();
+	}
+}
+
+// Refine abstraction 2 in bridge pattern
+class Bike extends Vehicle {
+	public Bike(Workshop workShop1, Workshop workShop2)
+	{
+		super(workShop1, workShop2);
+	}
+
+	@Override
+	public void manufacture()
+	{
+		System.out.print("Bike ");
+		workShop1.work();
+		workShop2.work();
+	}
+}
+
+// Implementer for bridge pattern
+interface Workshop
+{
+	abstract public void work();
+}
+
+// Concrete implementation 1 for bridge pattern
+class Produce implements Workshop {
+	@Override
+	public void work()
+	{
+		System.out.print("Produced");
+	}
+}
+
+// Concrete implementation 2 for bridge pattern
+class Assemble implements Workshop {
+	@Override
+	public void work()
+	{
+		System.out.print(" And");
+		System.out.println(" Assembled.");
+	}
+}
+
+// Demonstration of bridge design pattern
+class BridgePattern {
+	public static void main(String[] args)
+	{
+		Vehicle vehicle1 = new Car(new Produce(), new Assemble());
+		vehicle1.manufacture();
+		Vehicle vehicle2 = new Bike(new Produce(), new Assemble());
+		vehicle2.manufacture();
+	}
+}
+
+```
+
+
+The expected output of the above would be :
+
+Car Produced And Assembled.
+
+Bike Produced And Assembled.
+
 
 ## Composite pattern
 
@@ -265,3 +603,23 @@ Common behavioural design patterns include:
 - Visitor pattern
 - Mediator pattern
 - Momento pattern
+
+## Observer pattern
+
+## Strategy pattern
+
+## State pattern
+
+## Command pattern
+
+## Chain of responsibility
+
+## Template pattern
+
+## Interpreter pattern
+
+## Visitor pattern
+
+## Mediator pattern
+
+## Momento pattern
