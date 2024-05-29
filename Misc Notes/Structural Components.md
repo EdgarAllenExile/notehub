@@ -1,6 +1,4 @@
-# Basics and Fundamentals
-
-## Programming Concepts - C# Specific View
+# Structural Components - C# Centric View
 
 ### Namespaces
 
@@ -14,8 +12,6 @@ Namespaces organise its classes.
 A "using" statement lets you get around needing to declare the full namesace.class.entity.
 
 Declaring your own Namespace lets you organise classes in yout own outlined structure.
-
-
 
 ### Classes
 
@@ -36,7 +32,6 @@ Classes can only inherit one base class, however since that base class can inher
 
 - This is especially common with interfaces.
 
-
 ### Interfaces
 
 An interface is an abstract class(?) that defines a set of related functions that a class or struct must implement.
@@ -55,22 +50,16 @@ Any class or struct that implements an interface must then inturn implement all 
 
 You cannot create an instance of an interface directly. To use the functionality, you must implement the members through a class or struct.
 
-
 ### Dependancy Injection - Does this live here or in Design Patterns??
 
-Dependancy injection is a pattern in which an object or method supplies the dependancies of another object at run time. These dependacies or services dictate *something about the parent object.* 
+Dependancy injection is a pattern in which an object or method supplies the dependancies of another object at run time. These dependacies or services dictate *something about the parent object.*
 
-
-The dependancy injection handles the creation of the objects, the classes relating to the objects and the provisioning of the classes to the objects. 
+The dependancy injection handles the creation of the objects, the classes relating to the objects and the provisioning of the classes to the objects.
 
 - If there are any changes to be made to the objects, it is the responsibility of the injection pattern to provide the objects the new classes.
-
 
 ## Annoying words that seem to keep cropping up
 
 Overloads
 
 Contract - Domain Layer
-
-
-### Hello
