@@ -378,7 +378,6 @@ Can also be used when you would like to reuse classes or components with interfa
 
 Can also act as a bridge for making different interfaces work together correctly, can be especially helpful when using imported third party APIs or libraries which present with different inerfaces than the existing ones on the system.
 
-
 ### Implementation
 
 There are four major components required for an adapter pattern:
@@ -392,14 +391,12 @@ There are four major components required for an adapter pattern:
 4. Client. The code that will use the target interface to interact with objects.
    1. It is the code that benefits from the integration of the adaptee into the system through the adapter.
 
-
 When it gets down to it, the design pattern follows four man steps:
 
 1. Client request is initiated by calling a method on the adapter using the target interface
 2. The adaptor translates or maps the client's request into a form that the adaptee understands, using the adaptee's interface
 3. The adaptee performs the actual work based on the translated reques from the adapter
 4. The client receives the results of the call, remaining agnostic to the adapters presence or the specifics of the adaptee
-
 
 #### Example
 
@@ -453,21 +450,19 @@ The expected output of this code would be "Legacy Printer is printing a document
 
 ## Bridge pattern
 
-Similar to an adapter in intent, the bridge pattern seperates an abstraction from its implementation. This can promote loose coupling between class abstractions and implementations.	
+Similar to an adapter in intent, the bridge pattern seperates an abstraction from its implementation. This can promote loose coupling between class abstractions and implementations.
 
-There are two parts to a Bridge design pattern abstraction and implementation. 
+There are two parts to a Bridge design pattern abstraction and implementation.
 
 - The bridge pattern allows both of these parts to be developed independantly of each other. The client code only needs to access the abstraction portion of the code without concerning itself with the implementation.
 - The abstraction is done in an interface or abstract class, with the implementor also being an interface or class.
 - The abstraction contains a reference to the implementor. Children of the abstraction are referred to as refined abstractions. Children of the implementer are concrete abstractions.
-
 
 You should use a bridge pattern because:
 
 - It decouples an abstraction from its implementation so that the two can vary independantly
 - You are developing a platform independant feature
 - Lets you stick an abstraction interface in
-
 
 ### Implementation
 
@@ -478,8 +473,7 @@ There are four elements involved when using a bridge pattern.
 3. Implementor. Defines the interface for the implememtation classes. Does not need to correspond directly to the abstraction interface and can be very different.
 4. Concrete implementor. Implements the above implementor by providing the concrete implementor.
 
-
-#### Example 
+#### Example
 
 ```
 // Java code to demonstrate
@@ -569,13 +563,11 @@ class BridgePattern {
 
 ```
 
-
 The expected output of the above would be :
 
 Car Produced And Assembled.
 
 Bike Produced And Assembled.
-
 
 ## Composite pattern
 

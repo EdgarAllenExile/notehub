@@ -1,6 +1,5 @@
 # Shortcuts and Commands
 
-
 ## Visual Studio
 
 | Action        | Shortcut           | Notes                               |

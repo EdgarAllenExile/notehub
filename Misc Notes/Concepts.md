@@ -22,7 +22,6 @@ In either case, the concrete object must implement all inherited methods and pro
 
 Abstract classes are inherited by concrete classes and their methods must be inherited by their implementees.
 
-
 #### Code Example
 
 ```
@@ -60,8 +59,6 @@ Abstract classes are inherited by concrete classes and their methods must be inh
     }
 ```
 
-
-
 ### Tight Coupling
 
 Tight coupling occours when a class is dependant on a concrete dependancy. Meaning that changes in one object must be reflected on the other object.
@@ -70,11 +67,9 @@ Tight coupling occours when a class is dependant on a concrete dependancy. Meani
 
 Loose coupling occours when two objects are independant and each object can use one and other independantly
 
-
 ### Inversion of Control
 
 Inversion of control means that a component is 'given' its dependant data sources, services and configurations as opposed to needing to go and find them.
-
 
 ### Dependancy Injection
 
