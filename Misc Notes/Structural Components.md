@@ -50,6 +50,10 @@ Any class or struct that implements an interface must then inturn implement all 
 
 You cannot create an instance of an interface directly. To use the functionality, you must implement the members through a class or struct.
 
+#### Questions and Comments
+
+Apparently you can delegate the implementing of an interface's methods to child classes / objects / components??
+
 ### Dependancy Injection - Does this live here or in Design Patterns??
 
 Dependancy injection is a pattern in which an object or method supplies the dependancies of another object at run time. These dependacies or services dictate *something about the parent object.*
