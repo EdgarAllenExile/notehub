@@ -50,6 +50,12 @@ Any class or struct that implements an interface must then inturn implement all 
 
 You cannot create an instance of an interface directly. To use the functionality, you must implement the members through a class or struct.
 
+#### Poetic Musings
+
+Interfaces are hard typed in C#, however they are not in other languages and do not need to be. The Interface is the client facing API portion of a component. Anything in a program that does work has a corrasponding interface, even if it is not known as such (in c#). 
+
+A function has an "interface", which is its signature. The signature defines the return type and the parameters the function accepts. Interfaces do not have any special powers, they only define how existing code would interact with an object or the wider program. The interface is used to seperate this "contract" (between component and program) from the internal working of the component.
+
 #### Questions and Comments
 
 Apparently you can delegate the implementing of an interface's methods to child classes / objects / components??
@@ -67,3 +73,5 @@ The dependancy injection handles the creation of the objects, the classes relati
 Overloads
 
 Contract - Domain Layer
+
+Lambda
