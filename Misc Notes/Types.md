@@ -1,14 +1,12 @@
 # Types
 
-
 ## Generic Types
-
 
 ## Value Types
 
 ### Enumeration Types
 
-An enumeration or enum is a value type defined by a set of named constants. 
+An enumeration or enum is a value type defined by a set of named constants.
 
 They are declared similarly to other things, and look a little like this:
 
@@ -41,13 +39,17 @@ public class EnumConversionExample
 }
 ```
 
-
 You can also do cool things with extension methods I think, but that is not what I am checking out at the moment.
 
+#### Use Case
+
+You should use an enum when a variable can only take one of a small set of parameters. Such as "full time", "part time", "casual" for contracted workers.
+
+Enums should specifically be used for situations in which you have enumerated every possible value a variable could take. Days of the week or months of the year as an example.
 
 ### Structure Types
 
-Structure types, or structs, encapsulate data and functionality. 
+Structure types, or structs, encapsulate data and functionality.
 
 A variable of a struct type contains an instance of that time (value semantics (not sure how relevant)).
 
@@ -71,7 +73,6 @@ public struct Coords
 }
 ```
 
-
 ### Tuple Types
 
 A tuple type, or just a tuple, is a quick and easy way of grouping multiple data elements into a lightweight data structure.
@@ -89,7 +90,6 @@ Console.WriteLine($"Sum of {t2.Count} elements is {t2.Sum}.");
 // Output:
 // Sum of 3 elements is 4.5.
 ```
-
 
 Like (for example) a javascript object, you can declare field names for tuples and use them in deconstruction. However, you can also let C# infer the field name.
 
