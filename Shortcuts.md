@@ -19,3 +19,5 @@
 | Contract Selection   | Shift + Alt + -    | Will deselect based on the same                         |
 | Move Forward Tabs    | Ctrl + Tab         | Goes left to right                                      |
 | Move Backwards Tabs  | Ctrl + Shift + Tab | Goes right to left                                      |
+| Move Selection Up    | Alt + Up Arrow     | Moves highlighted section up                            |
+| Move Selection Down  | Alt + Down Arrow   | Moves highlighted selection down                        |
