@@ -21,3 +21,13 @@
 | Move Backwards Tabs  | Ctrl + Shift + Tab | Goes right to left                                      |
 | Move Selection Up    | Alt + Up Arrow     | Moves highlighted section up                            |
 | Move Selection Down  | Alt + Down Arrow   | Moves highlighted selection down                        |
+|                      |                    |                                                         |
+
+
+
+## Windows
+
+| Action                       | Shortcut             | Comment                                                      |
+| ---------------------------- | -------------------- | ------------------------------------------------------------ |
+| Open File Explorer           | Windows + E          | Opens new file explorer winow                                |
+| Open CMD at current location | CMD In File Explorer | Opens an instance of command prompt at current file location |
