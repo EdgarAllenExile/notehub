@@ -1,4 +1,4 @@
-# Scheduled Jobs 
+# Scheduled Jobs
 
 Connect to db, expand instance
 
