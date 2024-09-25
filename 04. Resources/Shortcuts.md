@@ -23,11 +23,12 @@
 | Move Selection Down  | Alt + Down Arrow   | Moves highlighted selection down                        |
 |                      |                    |                                                         |
 
-
-
 ## Windows
 
 | Action                       | Shortcut             | Comment                                                      |
 | ---------------------------- | -------------------- | ------------------------------------------------------------ |
 | Open File Explorer           | Windows + E          | Opens new file explorer winow                                |
 | Open CMD at current location | CMD In File Explorer | Opens an instance of command prompt at current file location |
+| Print Screen                 | Windows + Shift + S  | Screen Snipper                                               |
+| Hard Reload                  | Control + Shift + R  | Refresh page and cache                                       |
+| Universal Search             | Alt + Space          | Lets you search and do maths                                 |
