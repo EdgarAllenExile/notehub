@@ -65,7 +65,10 @@ Tight coupling occours when a class is dependant on a concrete dependancy. Meani
 
 ### Loose Coupling
 
-Loose coupling occours when two objects are independant and each object can use one and other independantly
+Loose coupling occours when two objects are independant and each object can use one and other independantly.
+
+- See overview of different types of objects
+
 
 ### Inversion of Control
 
