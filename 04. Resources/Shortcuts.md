@@ -21,7 +21,8 @@
 | Move Backwards Tabs  | Ctrl + Shift + Tab | Goes right to left                                      |
 | Move Selection Up    | Alt + Up Arrow     | Moves highlighted section up                            |
 | Move Selection Down  | Alt + Down Arrow   | Moves highlighted selection down                        |
-|                      |                    |                                                         |
+| Select Open Tab      | Ctrl + Tab         | Windows + Tab style file selector                       |
+| Select Current File  | Ctrl + Alt + L     | Selects current file in solution explorer               |
 
 ## Windows
 
