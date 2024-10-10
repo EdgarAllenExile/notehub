@@ -23,6 +23,7 @@
 | Move Selection Down  | Alt + Down Arrow   | Moves highlighted selection down                        |
 | Select Open Tab      | Ctrl + Tab         | Windows + Tab style file selector                       |
 | Select Current File  | Ctrl + Alt + L     | Selects current file in solution explorer               |
+| Search File Tree     | Ctrl + ;           | Searches file tree by file name                         |
 
 ## Windows
 
