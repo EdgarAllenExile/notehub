@@ -21,9 +21,9 @@
 | Move Backwards Tabs  | Ctrl + Shift + Tab | Goes right to left                                      |
 | Move Selection Up    | Alt + Up Arrow     | Moves highlighted section up                            |
 | Move Selection Down  | Alt + Down Arrow   | Moves highlighted selection down                        |
-|                      |                    |                                                         |
-
-
+| Select Open Tab      | Ctrl + Tab         | Windows + Tab style file selector                       |
+| Select Current File  | Ctrl + Alt + L     | Selects current file in solution explorer               |
+| Search File Tree     | Ctrl + ;           | Searches file tree by file name                         |
 
 ## Windows
 
@@ -31,3 +31,6 @@
 | ---------------------------- | -------------------- | ------------------------------------------------------------ |
 | Open File Explorer           | Windows + E          | Opens new file explorer winow                                |
 | Open CMD at current location | CMD In File Explorer | Opens an instance of command prompt at current file location |
+| Print Screen                 | Windows + Shift + S  | Screen Snipper                                               |
+| Hard Reload                  | Control + Shift + R  | Refresh page and cache                                       |
+| Universal Search             | Alt + Space          | Lets you search and do maths                                 |
