@@ -52,3 +52,17 @@ abs or absolute covers value comparison statements. It uses the primitive predic
 Then there is the if statement, which is effectively a ternary. It takes the predicate, consequent and alternative. Consequent is e for some reason. Evaluation? 
 
 Then there is and or not, which I think are the same as Excel's versions of these functions.
+
+## Square Roots and Mathematical Functions
+Computer programs must be effective, where as mathematical procedures can be descriptive. The mathematical function "The square root of x is such that y (is above 0) and y^2 equequals x" is perfectly valid. However is of no use to a computer. Computers concern themselves with finding answers and being given instructions. The above quote is a complete description of what the square root of x should be, but it is not a set of instructions on how to find it.
+
+[!NOTE] Note 
+This can be referred to as the difference between declarative knowledge and imperative knowledge. Mathematics concerns itself with the description of a thing, where as computer science concerns itself with instructions on how to do a thing.
+
+### Actually Finding The Square Root
+Actually finding the square root of a number is done by using newton's method of approximations. Where we have x, then we guess a number y. We then take x / y and average it with Y. We continue doing this until we get to a close enough match. Replacing y with the first result each time.
+
+To translate this to computer procedure, we take the radicand (the number which we are trying to find the square root of) and a value for a guess. If the guess is good enough, we are done. If not we keep going. If you constructed this as a procedure, you could use a logic statement, however it is more fun to use recursion. Apply the function a normal, then when you are done, use an if statement to test if it meets the given tolerance, if not, call the function again using the new value for y (the result of the average of x/y and y).
+
+[!note] Note 
+This was actually invented by Heron of Alexandia in the 100CE.
