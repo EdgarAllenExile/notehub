@@ -66,3 +66,22 @@ To translate this to computer procedure, we take the radicand (the number which 
 
 [!note] Note 
 This was actually invented by Heron of Alexandia in the 100CE.
+
+## Scope - Procedures as Black Boxes
+Procedures are allowed to be recursive, that is, defined with refernce to themselves. 
+
+Seeing as procedures are implcititly a collection of steps, it makes sense that you are able to abstract away some of the steps. This is where calling other procedures enters.
+
+[!Note]
+Each procedure must accomplish an identifiable task that can be used as a module within another procedure.
+
+When we use other procedures this way we are employing them like black boxes. We do not care what the content of the procedure is, only that it returns what we want. Given the square root procedures mentioned above, it is immaterial how the square is calculated, these details can be supressed. As far as the procedure calling the square function is concerned, square is not even a procedure, it is an abstaction of a procedure. It is calling the value that results from the function. Thisa iscalled procedural abstraction.
+
+Procedures suppress detail in this way and allow for cleaner code.
+
+### Scope
+An implication of this, is scope and bound variables. The abstracted procedure does not know what the initial procedure calls its variables, it cannot know this. They are passed as values to the procedure, who in turn will bind them to the formal parameters that it knows. This allows named variables to have consistent values across the entire program.
+
+A formal parameter's name is immaterial to the function. This parameter is turned into a bound variable when the procedure is called, with the passed parameter becoming bound to the value. If the variable is not bound, we would call it a free variable. The section of code for which the variable is bound is known as that variable's scope.
+
+In this instance, the scope is the procedure. However we could call other free variables such as internal functions like square or maths functions. There can be issues with renaming system functions, but I don't really know if that will be relevant.
