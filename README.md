@@ -11,3 +11,4 @@ Riley's nerd notes, in Markdown.
 
 * [ ] What is a Vim Buffer
 * [ ] How should I best go about opening a workspace or similar
+* [ ] Why have I not included anything in here that is not VIM related.
