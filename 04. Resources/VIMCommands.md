@@ -18,3 +18,21 @@
 * `H` - move cursor to top ("high up" or "home") of window
 * `M` - move to middle of window
 * `L` - move to bottom ("low" or "last line") of window
+
+## Vertical Motions
+
+|Key|Result|
+|-----|----------|
+|k|go up|
+|j|go down|
+|-|Go up and move to the first non-black character |
+|+|Go down and move to the first characer |
+|gg|Go to first line |
+|G|Go to last line |
+
+
+## Vertical Motions
+
+|Key|Result|
+|-----|----------|
+|k|go up|
