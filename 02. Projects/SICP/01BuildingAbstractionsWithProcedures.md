@@ -56,8 +56,9 @@ Then there is and or not, which I think are the same as Excel's versions of thes
 ## Square Roots and Mathematical Functions
 Computer programs must be effective, where as mathematical procedures can be descriptive. The mathematical function "The square root of x is such that y (is above 0) and y^2 equequals x" is perfectly valid. However is of no use to a computer. Computers concern themselves with finding answers and being given instructions. The above quote is a complete description of what the square root of x should be, but it is not a set of instructions on how to find it.
 
-[!NOTE] Note 
-This can be referred to as the difference between declarative knowledge and imperative knowledge. Mathematics concerns itself with the description of a thing, where as computer science concerns itself with instructions on how to do a thing.
+> [!NOTE] Note 
+> This can be referred to as the difference between declarative knowledge and imperative knowledge. 
+> Mathematics concerns itself with the description of a thing, where as computer science concerns itself with instructions on how to do a thing.
 
 ### Actually Finding The Square Root
 Actually finding the square root of a number is done by using newton's method of approximations. Where we have x, then we guess a number y. We then take x / y and average it with Y. We continue doing this until we get to a close enough match. Replacing y with the first result each time.
@@ -85,3 +86,5 @@ An implication of this, is scope and bound variables. The abstracted procedure d
 A formal parameter's name is immaterial to the function. This parameter is turned into a bound variable when the procedure is called, with the passed parameter becoming bound to the value. If the variable is not bound, we would call it a free variable. The section of code for which the variable is bound is known as that variable's scope.
 
 In this instance, the scope is the procedure. However we could call other free variables such as internal functions like square or maths functions. There can be issues with renaming system functions, but I don't really know if that will be relevant.
+
+
