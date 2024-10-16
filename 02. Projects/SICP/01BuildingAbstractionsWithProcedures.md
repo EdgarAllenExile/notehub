@@ -115,5 +115,24 @@ Another way to do it, would be to create a counter, and iterate upwards each tim
 
 Calling the first procedure iterative feels wrong, however it is effectively a homebrew way of creating a looping construct. Many languages' looping constructs are memory inefficient, however scheme and others ensure they use constant space. This is called tail recursive implementation.
 
+### Tree Recursion
+This is a particularly interesting way to illustrate process recursion, espcially with the fibonacci example. It works be adding fib n-1 and n-2 (unless n is 0 or 1). So if you take n = 5, you want to work out fib 5 - 1 and fib 5 -2. To work this out you must work out fib 4 - 1 and fib 4 - 2. Thus these different steps are put on the stack until both other terms resolve. In this example it is when n = 1 or 0. Seeing how each iteration of the recursive pattern calls fib twice, this adds two branches to the tree that is made, except the last one where n = 1 or 0 is resolved.
+
+A tree recurisve pattern however is not efficient, as the amount of steps grows exponentially with the value of n (because each increment of n requires the bulk of the calculations to be recalculated, and each new increment adds two new top level calculations). Space however only grows linearly, because we only need to keep track of which nodes are above us in the process. 
+
+A linear method of calculating this same equation would just have a = a + b and b = to a, then decrement until 0. This requires a linear amount of steps as we are simply going one calculation at a time until our counter is 0.
+
+#### Counting Change
+Applying our tree recursive pattern to a new example, we can see that the number of different ways to make change with a given amount of coins is equal to all of the different ways to make change using all but the first coin AND all of the different ways that DO use the first coin. Therefore, we can take this and apply additional iterative steps to it and go through the different types of coins. 
+
+[!todo]
+Did not do the exercises here as maths is hard. Should also check 1.14-15 and I am not fully sure I understand space.
+
+### Orders of Growth
+One way to compute the gross measure of the resources required by a process is the order of growth. If n is the size of the problem and R(n) is the amount of resources to calcualate it. This could really be anything, such as the specificity required to calculate decimals. 
+
+We say that R(n) has order of growth theta of f(n). In our linear recursive process for doing factorials, the number of steps required grows proportionally to n, thus the steps required grows as theta n and so does the space required. For the iterative process, the steps required is still theta n (linear) however the space required is constant, so theta 1. The tree recursive fibonacci sequence requires theta (golden ratio^n) steps and space theta n.
+
+Whilst this is only a very approximate and rough understanding, it is useful to be able to use. For example, a linear process (theta (n)) doubling the size doubles the resources used. Exponential processes multiply the resource utilization by a constant amoutn each time. 
 
 
