@@ -135,4 +135,5 @@ We say that R(n) has order of growth theta of f(n). In our linear recursive proc
 
 Whilst this is only a very approximate and rough understanding, it is useful to be able to use. For example, a linear process (theta (n)) doubling the size doubles the resources used. Exponential processes multiply the resource utilization by a constant amoutn each time. 
 
-
+### Exponention
+Processes that are linear and do not defer opperations or place things on the stack, are space theta one. Because they occupy constant space.
