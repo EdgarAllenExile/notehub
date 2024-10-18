@@ -137,3 +137,12 @@ Whilst this is only a very approximate and rough understanding, it is useful to 
 
 ### Exponention
 Processes that are linear and do not defer opperations or place things on the stack, are space theta one. Because they occupy constant space.
+
+        I was thinking about this the wrong way around. `O(log n)` is actually preferred over constant growth `0(n)` in most situation becaue the x axis grows way way slower than the y axis. If you are calculating the exponent of a number. Actually I am not sure about this and will have to return to it.
+
+ -- Not sure how I managed to indent that entire paragraph...
+
+-- at this point I feel that I should leave the maths sections behind and keep going with the programming portion. Hence I am skipping these exercises and moving to 1.2.5
+
+### Greatest Common Divisor
+To find the GCD of a number, you could start by taking the factors of a number and finding the highest one, but i is simplest to use Uclid's Algorithm, which is that `a % b = r = a % r = bL:` 
