@@ -22,6 +22,7 @@ The two easiest ways to think about it are substitution and the other one
 
 ### Substitution
 Substitution method describes a method of evaluation an expression that has the passed values substitute the formal parameters when required.
+
 It can be easiest to think of substitution method as replacing each formal parameter by its corresponding argument from the outset.
 - This can be thought of as evaluating the meaning of a method, in so far as procedures can have meaning."
 
