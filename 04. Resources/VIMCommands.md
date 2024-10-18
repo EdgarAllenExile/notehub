@@ -1,7 +1,7 @@
 # Vim Commands
 
 
-
+* \ - Open and close neo tree whilst in normal mode
 * gg - move cursor to first line
 * #G - move cursor to # line
 * GG move cursor to last line
