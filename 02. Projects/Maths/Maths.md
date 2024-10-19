@@ -22,3 +22,4 @@ In different applications, different logarithms are used as the assumed.
 - The natural logarithm is e=2.718, which apparently has lots of derivatives.
 - Computer science is assumed to use base 2. This is called the Binary Logarithm.
 
+How should I go about actually writing maths things? Is Latex actually that good?
