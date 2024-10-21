@@ -147,3 +147,8 @@ Processes that are linear and do not defer opperations or place things on the st
 
 ### Greatest Common Divisor
 To find the GCD of a number, you could start by taking the factors of a number and finding the highest one, but i is simplest to use Uclid's Algorithm, which is that `a % b = r = a % r = bL:` 
+
+Lame's theorem is that if Euclid's algo requires k steps to compute the GCD, then the smaller of the two numbers must be greater than or equal to the k^th Fibonacci number.
+
+### Testing for Primality
+
