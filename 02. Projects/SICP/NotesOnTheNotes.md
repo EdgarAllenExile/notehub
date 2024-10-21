@@ -6,3 +6,5 @@ These are mathematically focused, but could definitely give me a little headssta
 
 
 I have actually decided that I am not sure if I need to do the additional exercises. The maths part is what I am most tripped up by, and we are not up to the Maths portion of this 'course'.
+
+Now I am testing to see if my fancy new git script works.
