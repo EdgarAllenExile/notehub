@@ -12,3 +12,5 @@ Riley's nerd notes, in Markdown.
 * [ ] What is a Vim Buffer
 * [ ] How should I best go about opening a workspace or similar
 * [ ] Why have I not included anything in here that is not VIM related.
+* [ ] Use cases for different types, like enums and structs
+* [ ] Different flags that can be applied to classes - static, ref, etc
