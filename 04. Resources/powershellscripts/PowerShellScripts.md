@@ -25,3 +25,7 @@ Get-ChildItem -Path . | ForEach-Object {
 Important Notes
 
 - The + "`r n" portion is needed for carriage return (extra back tick omitted as starts codeblock)
+
+Get-ChildItem "C:\Your\Files\Source" -Recurse -file | Copy-Item -Destination "C:\Your\Files\Destination" -Force
+Get-ChildItem "C:\Your\Files\Source" -Recurse -file | Copy-Item -Destination "C:\Your\Files\Destination" -Force
+Get-ChildItem "C:\Users\PD57215\Documents\FRTesting\Source" -Recurse -file | Copy-Item -Destination "C:\Users\PD57215\Documents\FRTesting\Destination" -Force
