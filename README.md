@@ -14,3 +14,7 @@ Riley's nerd notes, in Markdown.
 * [ ] Why have I not included anything in here that is not VIM related.
 * [ ] Use cases for different types, like enums and structs
 * [ ] Different flags that can be applied to classes - static, ref, etc
+
+## Things to experiment with
+* [ ] Code snippets for markdown, similar to this: https://mambusskruj.github.io/posts/pub-neovim-for-markdown/
+* [ ] Also play with markdown.nvim (although I think I have this one installed nativelly) : https://neovimcraft.com/plugin/tadmccorkle/markdown.nvim/
