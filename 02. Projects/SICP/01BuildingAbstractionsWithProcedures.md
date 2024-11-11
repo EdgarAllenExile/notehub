@@ -152,3 +152,38 @@ Lame's theorem is that if Euclid's algo requires k steps to compute the GCD, the
 
 ### Testing for Primality
 
+Note from the author, I got bored here and stopped.
+
+## Formulating Abstractions with Higher-Order Procedures.
+
+Procedures are abstractoins that describe compound operatoins on numbers independant of a specific integer. 
+
+For example, when we create a method to cube a number, we are not concerned with the cube of a particular number, rather the method for obtaining the cube of a particular number. 
+
+If we could not define functions in this way, then we would still be able to calculate the cube of a number, but we would not be able to express the conccept of cubing. Hence, all programming languatges should have the ability to build abstractions by assigning names to common patters and work in terms of those abstractoins directly. Or, put another way, define functions and then call them.
+
+> [!NOTE]
+> However we can also use procedures within another procedure. This is called a higher-order prodedure.
+
+### Constructing Procedures Using Lambda
+
+A lambda is an anonymous function, but in effect it could be called "make procedure". However this is a convention that is older than programming, derriving from the 1950s math-man Alonzo Church. Calculus and shit.
+
+Anonymous functions allow us to skip defining things and move straight to specifying how a procedure should return. For example, "my procedure returns x + 4". 
+
+In general, Lambda is used to create procedures in the same way as define, except that no name is procuded. (lambda (x) (+ x 4)). Like any expression, a lambda that has a procedure sas its value, a lambda can be used as an operator in a combination. Or really anywhere we would otherwise use a procedure name. 
+
+In LISP, we can even use lambda to define local variables. This is important because we often need to use variables beyond those that have been bound as formal params. Say when using a counter of similar intermediate variable. This has no meaning outside of the procedure, however is very important within it. Within LISP, we can use the special form let to make this more simple. 
+
+Within a let statement, the first portion is a set of name-expression pairs. When the LET is evaluated, each name is associated with the value of the corrasponding expression. The body of the let is then evaluated with the names bound as local variables. This is pretty much just syntactic sugar for using a lambda. 
+
+### Procedures as general methods. 
+
+We have seen how we can define a function, and also how we can use procedures to express general methodologies of computation.
+
+> [!ERROR]
+I skipped a whole bunch of shit here because it made my head hurt. I should come back to it.
+
+### Procedures as Returned Values
+
+We are able to define procedures whose return values are themselves procedures.
