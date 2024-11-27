@@ -187,3 +187,20 @@ I skipped a whole bunch of shit here because it made my head hurt. I should come
 ### Procedures as Returned Values
 
 We are able to define procedures whose return values are themselves procedures.
+
+The rest of this got a bit maths heavy for my personal taste, but I should return here.
+
+One interesting point right at the end was the topic of first class elements.
+
+#### First Class Elements
+
+First class elements are those with the least restrictions placed on how they can be used. Rights and privileges of first class elements include:
+
+- May be named by variables.
+- Can be passed as arguments.
+- May be returned by procedures.
+- Can be included in data structures.
+
+Unlike most languages, LISP classes procedures this high status. This has its costs and benefits, but should be noted.
+
+Also should be noted that I skipped all of these exercises because they seemed hard.
