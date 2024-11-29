@@ -2,8 +2,10 @@
 
 Riley's nerd notes, in Markdown.
 
-## Recommended VSc Plugins
+## Recommended Plugins & Tools
 
+- render-markdown
+  - .md renderer for nvim.
 - cweijan.vscode-office
   - Let's you work with .md files in a nice WYSIWYG editor. Apparently also lets you edit Word and Excel files, but I (bravely) use Word and Excel for that.
 
