@@ -1,4 +1,20 @@
-# Vim Commands
+# Command Line Commands
+
+WezTerm
+
+- Control + W | Delete Word
+- Control + U | Delete Line
+- Control + Shift + Direction Arrows | Resize outside of nvim
+- Command T | New Tab
+- Command N | New Window
+- Command Q | Quit 
+- Command W | Close Window
+Control Tab | go next tab
+- Leader Alt S | Vertical split
+- Leader Alt Shift S | Horizontal Split
+- Leader Number | Go that Tab
+
+## Vim Commands
 
 
 * \ - Open and close neo tree whilst in normal mode
