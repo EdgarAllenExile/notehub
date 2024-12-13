@@ -9,7 +9,7 @@ WezTerm
 - Command + N | New Window
 - Command Q | Quit 
 - Command W | Close Window
-Control Tab | go next tab
+- Control + Tab | go next tab
 - Leader Alt S | Vertical split
 - Leader Alt Shift S | Horizontal Split
 - Leader Number | Go that Tab
