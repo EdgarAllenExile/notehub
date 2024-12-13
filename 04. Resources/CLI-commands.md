@@ -5,7 +5,7 @@ WezTerm
 - Control + W | Delete Word
 - Control + U | Delete Line
 - Control + Shift + Direction Arrows | Resize outside of nvim
-- Command T | New Tab
+- Command + T | New Tab
 - Command N | New Window
 - Command Q | Quit 
 - Command W | Close Window
