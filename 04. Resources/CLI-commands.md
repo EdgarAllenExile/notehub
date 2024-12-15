@@ -52,3 +52,13 @@ WezTerm
 |Key|Result|
 |-----|----------|
 |k|go up|
+
+## Character Motions
+
+| Key   | Result    |
+|--------------- | --------------- |
+| t / T   | Find character, ends on found char, shift goes backwards |
+| f / F   |  Find character, ends before found char, shift goes backwards |
+| ;   | Go next found character   |
+| ,   | Go prev found character   |
+
