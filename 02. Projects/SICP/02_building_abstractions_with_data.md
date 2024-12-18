@@ -27,4 +27,16 @@ Conversely, a concrete data representation must also exist, which is independant
 The intersection between these two parts is a set of procedures called selectors and constructors. These two procedures implement abstract data in the terms of concrete implementaion.
 
 > [!NOTE]
-> I think it is best to think of the intersection data abstraction as getters and settings in .NET. Your business logic deals with the data it expects to find when the program runs, whereas the data source is only serving raw numbers. The getters and settings meanwhile will take the raw data from the database and perform manipulations on it to get it into the form that your business logic expects.
+> I think it is best to think of the intersection data abstraction as getters and settings in .NET. Your business logic deals with the data it expects to find when the program runs, whereas the data source is only serving raw numbers. The getters and settings meanwhile will take the raw data from the database and perform manipulations on it to get it into the form that your business logic expects. 
+
+### 2.1.1 Exercise
+
+This is where the basic forms of the expressions live that we will probably use all chapter.
+
+The basic expressions here are abstract from the rational numbers (fractions) that we will use, because they do not know to expect fractions. 
+
+The only thing that they know at this stage, is that they will take two objects, do something to them and work with the results.
+
+As the all seeing programmer, we know that the procedures will decouple the rational numbers from their partners and deal with the results as basic bits. But the program doesn't. All it knows is that it takes the params, manipulates them and combines / subrtacts / sums / divides the results. 
+
+A pair in LISP is exactly what it sounds like, and honestly I don't know why. But it can be used to create complex data structures. Two primative data elements combine to create the single compound pair. Pairs can be combined to create increasingly complex structures, known as list-structured data.
