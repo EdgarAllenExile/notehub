@@ -41,5 +41,15 @@ As the all seeing programmer, we know that the procedures will decouple the rati
 
 A pair in LISP is exactly what it sounds like, and honestly I don't know why. But it can be used to create complex data structures. Two primative data elements combine to create the single compound pair. Pairs can be combined to create increasingly complex structures, known as list-structured data.
 
+In the exercise, make-rat is the constructor, because it is constructing the pair.
+
+The selectors are numer and denom becasue they deconstruct the data objects / select the data points.
+
 ### 2.1.2 Abstraction Barriers
+
+In general, the idea is that with data abstraction, for each data object, you want to identify a basic set of operations that will perform all manipulations of that data. You want to express those manipulations for each type and only use those manipulations when using that type.
+
+> [!TIP]
+> This is why you inject an abstract type into your collectoins and then only use those defined methods with your type. Think about how the concurrent lists were quite limited in scope.
+
 
