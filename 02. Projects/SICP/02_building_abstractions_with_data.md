@@ -40,3 +40,6 @@ The only thing that they know at this stage, is that they will take two objects,
 As the all seeing programmer, we know that the procedures will decouple the rational numbers from their partners and deal with the results as basic bits. But the program doesn't. All it knows is that it takes the params, manipulates them and combines / subrtacts / sums / divides the results. 
 
 A pair in LISP is exactly what it sounds like, and honestly I don't know why. But it can be used to create complex data structures. Two primative data elements combine to create the single compound pair. Pairs can be combined to create increasingly complex structures, known as list-structured data.
+
+### 2.1.2 Abstraction Barriers
+
