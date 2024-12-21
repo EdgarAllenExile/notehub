@@ -52,4 +52,5 @@ In general, the idea is that with data abstraction, for each data object, you wa
 > [!TIP]
 > This is why you inject an abstract type into your collectoins and then only use those defined methods with your type. Think about how the concurrent lists were quite limited in scope.
 
+With a nice and abstract set of procedures, you can manipulate the inputs and outputs in different ways to suit your needs. The 'interfacing' portions of the code that do the getting / setting and intermediate steps do not need to be updated. Using the above example, you can use GCD either at pair construction or at value retrieval. It does not matter and will depend on when you need the program to be fast.
 
