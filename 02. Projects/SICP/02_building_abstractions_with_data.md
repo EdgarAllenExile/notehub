@@ -54,3 +54,14 @@ In general, the idea is that with data abstraction, for each data object, you wa
 
 With a nice and abstract set of procedures, you can manipulate the inputs and outputs in different ways to suit your needs. The 'interfacing' portions of the code that do the getting / setting and intermediate steps do not need to be updated. Using the above example, you can use GCD either at pair construction or at value retrieval. It does not matter and will depend on when you need the program to be fast.
 
+### 2.1.3 What is data?
+
+In general, data is dome collection of selectors and constructors that together with specified conditions that they must satisfy to be valid objects.
+
+We could reimplement primative constructors in our own way as a set of procedures, which would satisfy the base level requirements of data. A data type being a built in, does not give it primacy in this way. 
+
+The ability to manipulate procedures as objecs further shows that we are able to represent compount data, as functionaly, the procedure can be indistinguishable from the compount type.
+ 
+> [!NOTE]
+> This notion, manipulating procedures to represent compunt data is konwn as message passing and is important in modeling and simulation.
+
