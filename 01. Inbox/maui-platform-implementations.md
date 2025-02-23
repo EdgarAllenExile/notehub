@@ -22,3 +22,7 @@ else if (DeviceInfo.Platform == DevicePlatform.iOS)
 {
     VerticalLayout.Add(new iOS.ViewiOS());
 }`
+
+## How to get around disctinct name requirements
+
+If you create a placeholder map componenet (grid or similar) then you can simply add your platorm specific implementation to this componenet at compile time. It is more annoying to name it this way, but you can still add a Map property and then access it that way.
