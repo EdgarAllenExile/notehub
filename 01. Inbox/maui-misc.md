@@ -10,6 +10,8 @@ You probably want to do this using `CopyToAsync(stream, picture type, quality)`
 
 I think you probably can't give it a straight up memory stream, but that would be more interesting.
 
+What I am not overly sure of, is how to resize the resulting images.
+
 ## Maui Shapes & Esri Shapes
 
 Maui.Contols.Polygons, polygons are composed of a collection of points, the PointsCollection. 
