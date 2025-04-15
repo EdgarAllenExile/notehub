@@ -4,7 +4,7 @@
 
 `npm create vite@latest`
 `npm install`
-`vite run dev`
+`npm run dev`
 
 ## Notes
 
