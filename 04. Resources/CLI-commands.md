@@ -1,5 +1,13 @@
 # Command Line Commands
 
+## Fancy Things
+
+- Typing `ii .` in powershell will open file explorer from powershell in the current dir
+- Typing `pwsh` in file path in explorer will open powershell in current dir
+- Typing `cmd` in file path in explorer will open command prompt in current dir
+
+
+
 WezTerm
 
 - Control + W | Delete Word

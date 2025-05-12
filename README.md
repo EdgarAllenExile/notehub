@@ -26,3 +26,8 @@ Riley's nerd notes, in Markdown.
 ## Things to experiment with
 * [ ] Code snippets for markdown, similar to this: https://mambusskruj.github.io/posts/pub-neovim-for-markdown/
 * [ ] Also play with markdown.nvim (although I think I have this one installed nativelly) : https://neovimcraft.com/plugin/tadmccorkle/markdown.nvim/
+
+## Things I need to rememer
+
+- When executing editor commands, you include colon then lua to get them to run. Like this:
+  - `:lua {command}`
