@@ -18,10 +18,10 @@ Riley's nerd notes, in Markdown.
 ## Things that I need to learn more about
 
 * [x] What is a Vim Buffer
-* [ ] How should I best go about opening a workspace or similar
-* [ ] Why have I not included anything in here that is not VIM related.
-* [ ] Use cases for different types, like enums and structs
+* [x] How should I best go about opening a workspace or similar
+* [x] Use cases for different types, like enums and structs
 * [ ] Different flags that can be applied to classes - static, ref, etc
+* [ ] How does git AutoMerge work? What are its limitations, why does it not merge some simple things?
 
 ## Things to experiment with
 * [ ] Code snippets for markdown, similar to this: https://mambusskruj.github.io/posts/pub-neovim-for-markdown/
