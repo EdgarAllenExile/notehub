@@ -250,4 +250,38 @@ Generally these actions should be taken in pairs, a scaleout action for increase
 
 Actions can be proportionate to the same condition, or they can b e seperate. i.e. you can increase and decrease by the same metric, or they can each be depednant on any variety of conditions.
 
+## How to Enable Autoscale
+
+Generally, Portal -> Scale out (ASP) -> Rules Based -> Scale out Method -> Configure
+
+Only manual scaling by default, custom autoscale reveals groups that can be used to manage scale settings.
+
+## Auto Scale best practices
+
+Concepts:
+
+- Scaling out is horizontal, increating or decreasing number of instances
+- Auto Scale jobs always readsthe associated metric by which it should scale
+- All thresholds are calculated at an instance level, add 1x instance, when instances at 2
+- All added to the activity log
+
+### Autoscale best practices
+
+Ensure the max and min values are different and have a decent margin. Max instances = 2 min instancese -2 is bad since no scaling can happen.
+
+Choose right statistic for metrics. Probably use average.
+
+Choose thresholds carefully for all metrics. Don't use the same number for both, use something like 50% and 80% CPU usage, giving the rules the ability to scale and then coast for a litle.
+
+You can use multiple rules for a single profile. On scale-out, autoscale runs if any rule is met. On scale-in, autoscale requires all rules to be met.
+
+Always select a safe default instance number.
+
+Set notifications.
+
+## Staging Environments
+
+Staging slots:
+
+- Validate changes
 
