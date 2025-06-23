@@ -284,4 +284,27 @@ Set notifications.
 Staging slots:
 
 - Validate changes
+- Use warmed up resources
+- Allow for nice easy rollbacks
 
+You can use as many slots as you want!
+
+### Slot swapping procedure
+
+The steps to swapping slots are as follows:
+
+1. Apply settings to slot (app settings / con strings / CICD and auth settings)
+2. Restart source slot
+3. Init local cache, by requesting app root, also triggers a restart
+4. If everything is nice and warm, swap slots. includes switching routing rules and actual slots
+5. Apply all settings to target slot and restart
+
+Some settings are swappable and some are not. Scope that shit out in the big old table on this page.
+
+Auto swap somehow has zero front facing downtime?
+
+### Routing between slots
+
+You can automatically scale network traffic on the App service. You can also see which slot your requests are being passed to in the header.
+
+Route traffic manually in situations when you want opt in or opt out beta and similar. To manually Route, use x-mx-routing-name query param in header.
