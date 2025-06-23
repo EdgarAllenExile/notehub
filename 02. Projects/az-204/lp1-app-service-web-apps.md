@@ -194,4 +194,60 @@ There are several requirements to use a private cert in an pp service. If needed
 
 Free app service managed certificates are a turn key solution for securing DNS name in the app service. Auto renewed and canbe bound to the custom domain. There are also limitation and other parts of this that are probably important.
 
+## Examine Scale out options
+
+You can scale things manually, or automatically using Azure Auto Scale (based on rules you define) or Automatic Scaling (based on parameters you set).
+
+### Autoscale vs Automatic Scaling
+
+#### Autoscaling
+Autoscaling increases resources based on current demand. Scales 'in and out' as opposed to up and down. 
+
+Can be done based on a variety of factors. Characteristics include:
+
+- Standard tiers and up
+- Rule or schedule based 
+- runs on other instances that are available
+
+Should consider auto scaling to provide elasticity for a service. 
+
+It works by providing additional web servers, as such it might not be applicable to resource intensive sites. Generally preferred to manually scale in those situations.
+
+Generally do not use for long term growth options. This is because of the overhead required with monitoring autoscaling.
+
+#### Automatic Scaling
+Automatic Scaling:
+
+- Only Premium and Up
+- Based on http traffic
+- No Schedule
+- Always ready or prewarmed instances available
+
+### Auto Scaling
+
+There are two available conditions to determine auto scaling. Scaling based on a metric (disk queue, http requests etc) and scaling based on a schedule.
+
+You can combine these in different ways to allow for progressive scaling and rule changes. Schedule for a certain time and then incorporate metrics or vise versa.
+
+Metrics that autoscaling can use are as follows:
+- CPU Percentage
+- Memory Percentage
+- Disk queue length
+- http queue length
+- data in / data out
+
+### Rules for Autoscaling
+
+In general, metrics are analysed in one minute increments (time grains). This is a form of time aggregation.
+
+This can be further aggregated by the use of a duration (a user set time) that will further determine if scaling is required. These can be used with different aggregation, for example, the duration can look at the average determined for the percentage utilisation at each time interval.
+
+### Autoscale actions
+
+Actions are either scale in or scale out, meaning either increase or decrease the number of instances available. These rules are subject to cool downs follwing the action so they don't increase massively.
+
+Generally these actions should be taken in pairs, a scaleout action for increased usage and a scalein action for decreased.
+
+Actions can be proportionate to the same condition, or they can b e seperate. i.e. you can increase and decrease by the same metric, or they can each be depednant on any variety of conditions.
+
 
