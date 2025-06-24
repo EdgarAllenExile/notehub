@@ -75,3 +75,82 @@ RUs are consumed at a variable rate depending on how your account is set:
 - Provisioned throughput assigns a number of RUs to use per second
 - Serverless mode is basically on consumption
 - Autoscale lets you monitor usage and adjust accordingly, should be used for mission critical tasks with unpredicatable useage
+
+# Working with CosmosDB
+
+The .NET SDK uses boring generic names for things, being container (collection, graph or table) and item (documnt, row, edge). 
+
+## Cosmos Client
+
+Creating a client is threadsafe  and you should use a single CosmosClient uring the life time of the application. Singleton?
+
+## Stored Procs
+
+You can write stored procs for Cosmos db to write stored procs, triggers and user defined functions.
+
+Stored Procs are registerd per collection and can operate on anything within that collection. 
+
+Context is important within these operations as they determine which actions can be taken by that thing. 
+
+All operations must execute within a limited lifetime. All functions will return a bool that represents if they do not complete.
+
+### Insert
+
+When you create an item in a container, the id is returned. Creating is async and depends ont he callback function. This is a JS function whch has two params, one error object and a return value. You can either handle the exception or the runtime will do so. 
+
+You can also pass a bool somewhere which will require a description be set. 
+
+params are always passed as a string to a stored proc. Even if you pass an array, this will be converted to a string and passed. To get around this, you should build a little functoin within the proc to parse the string and return an array.
+
+### Transactions
+
+you can use transactions on items within a container using procs. This obvs uses JS and can batch or resume execution depending on what happens. The Continuation value can be of any value and the app will then use this value to resume the transaction. 
+
+An example of this, would be to send a batch of docs to the db, it can try to create them and then observe the return value. If the value is not equal to docs sent or if it did not create any docs then you can return.
+
+### Triggers and UDFs
+
+Pretriggers execute before events and post triggers after them...
+
+Triggers are not automatically executed, they must be specified for each operation that you want them to execute.
+
+Pretriggers do not accept parameters, but they can be used to validate or manipulate the requests. This could include inserting a timestamp if there is one missing. 
+
+Post Triggers execute in the same transaction as the actual transactoin and can include things like updating meta data etc. If the post trigger fails though, this will throw an exception and the whole transaction is rolled back.
+
+UDFs or User Defined Functions can execute within a query and provide increased functionality. This might include categorising data depending on its value (tax brackets for income).
+
+## Change Feed
+
+cosmosDB instances have a persistant change feed that records changes as they happen. This uses a db litener which outputs a sorted list of documents that were changed in the orderthat they were modified.
+
+these can be processed async and incrementally and can be parallel proccessed across multiple consumers.
+
+Change feeds cannot be updated and doesn't log delete actions. To get around this you can add a 'deleted' field to an item then set a time to live to delete it later.
+
+### Working with the Change Feed
+
+Can use as either a push or pull feed. If you are pushing, then there needs to be some sort of change feed processor. The complexity of such actions are required to be managed by the processing resource. 
+
+Within a pull model, the client must do this work. The client has the logic for processing and must store the state for the processing work. 
+
+Generally you wnat to use the push model so as to not need to worry about polling the chagne feed. Pull model is good because its extra low cost though. This can include, reading a partitions chnges, throttling changes for processing and doing a one time read of the chagne feed. 
+
+### Push Model
+
+Generally, Function triggers and change feed processor lib are how you use push model. Functions just use the processing lib behind the scenes though, so its less fun.
+
+You can trigger functions based on events in the CDB.
+
+Change Feed Processor lib comes as the azure cosmos .net and java sdks. There are four main components, monitored contianer(what you are watching), lease container(stage storage across multiple workers), compute instance (hosts the processor, can bea vm, app service or hardmetal) and delegate(code that acts on each change read). 
+
+When implementing, the entry point is always the monitored container. From there you call the builder and then implement it. First param passed is name, then you identify the delegate. After that you can define the computer instance and lease container. 
+
+You canthen build and start it.
+
+### Lifecycle
+
+1. Read change feed
+2. if no changes, sleep then go 1.
+3. If there are changes send to delegate
+4. Once complete, then update the lease store with the processed data and go 1.
