@@ -154,3 +154,5 @@ You canthen build and start it.
 2. if no changes, sleep then go 1.
 3. If there are changes send to delegate
 4. Once complete, then update the lease store with the processed data and go 1.
+
+Seven more to go
