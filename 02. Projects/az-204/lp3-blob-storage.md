@@ -81,4 +81,34 @@ Azure CLI is just within the JSON file.
 
 ## Rehydrating from archive 
 
+Whilst in archive, a blob is considered offline and cannot be read or modified. to do this, you must first rehydrate to either hot or cool. 
 
+This can be done by either copying the existing blob to an online tier, or changing the existing blob to online. Usually, the best thing to do is copy it.
+
+Rehydrating a blob can take hours. Best to do one big boy than smaller boys as concurrency is bad and slow.
+
+You can set  this as high prio, which means you can get less than 10bg in about an hour. Stnadard prio can take up to 15 hours.
+
+## Blob Storage Client Library
+
+.NET client libs make calling azure storage pretty simple
+
+They have things like Blob Client, Options, Container Client, Storage Client and URI Builder. 
+
+### Create a client
+
+Like with all Azure SDK things, first step is to create a client. This incoles passing a URI referencing the endpoint to that client. 
+
+An authorized Blob Service Cient objet allows your app to callresources at the storage account level. This client lets you do the general Add Edit List Delete calls to conainers.
+
+You can use a service client to create a container client, which then lets you call the container resources. 
+
+From there you can create a standard spec blob client object to manage the blob resource. This can be done via either service or container client.
+
+### Container Properties
+
+Blob containers support both system and user properties. Generally, system properties are http headers and user metadata is name value pairs for a storage resource. These are also http headers and should be written as such.
+
+You can get and set these by just claling the GetProperties methods.
+
+You can also set and retrieve data. To set it you add the name value pairs to a new iDictionary object, then calling the set method. Get Properties does what yoyu think it should.
