@@ -52,3 +52,27 @@ Components of the docker file:
     - Expses port 80
 - CMD dotnet, mydll
     - the command to run the container
+
+# Container Instances
+
+Container instances are useful for single purpose jobs that can include simple apps, automated tasks and build jobs.
+
+You might use a container for the following reasons:
+
+- Fast startup, since they start much faster than VMs
+- Container access, since you can exose container groups to the internet
+- Hypervisor level security, since you can totally isolate the apps
+- Customer data, is stored at a minimum
+- Custom sizes, the right tool for any job
+- Persistant storage, mount file shares to any container
+- Both linux and Windows images available! 
+
+## container Groups
+
+Containers live in groups, which are a collection of containters that are scheduled on the same host machine. These containers share a lifecycle, local network, resources and storage volumes.
+
+Is a container group the same as a docker compose file?
+
+Multi-Container groups can be deployed in two ways, ARM templates or YAML files. MS recommends using ARM if you are deploying multiple things at once and YAML when only deploying contianer instances.
+
+
