@@ -129,5 +129,72 @@ Uses for this sort of a tool include:
 - background processes
 - event driven processing
 - microservices
+ 
+ Container Apps are dunaiucally scaling, using http traffic, event driven processing, load or KEDA supported scaling.
 
+With container apps, you can:
 
+- Run different versions of the same app, manag HTTPS ingress without other Azure infrastructure
+- split traffic across different app versions
+- Built micro services
+- Run containers from any registry, including docker and azure
+- Virtual network
+- Manage secrets 
+- Monitor logs
+
+## Container Apps and App Environments
+
+Container apps are deployed to container app environments, which are a secure boundry around groups of contianer apps. 
+
+All container apps within an environment use the same vnet and log analytics workspace.
+
+You can use an existing vnet.
+
+Use the same env if you manage related services, use the same vnet, use Dapr o share logs.
+
+You can actually have multiple ontainers in the same container app, using the side car pattern. 
+
+You can use private registries by pasing credentials into the container apps config. This is through the properties.config, then teh passwordSecretRef field. 
+
+Azure Container apps do have flaws:
+
+- No priverladged containers
+- You can only use linux containers
+
+### Auth for your Container Apps
+
+Container apps have built in auth that do not require you do code it up.
+
+You do have to use https andfedreated identity, in which user identieies and auth flow are managed. 
+
+This auth and authorisation is a side car form of middleware that runs on each replica in the app.
+
+When you turn it on, every http request passes through the security layer.
+
+This container basically does it all, authenticating, sessionss and http headers.
+
+Implementing it depends on if you are using provider sdp or not. This can be called server-directed flow (without sdk) or with provider sdk (client-directed flow).
+
+I am definitely going to forget this and I am not sure how to make it stick. 
+
+### Revisions
+
+You can create immutable snapshots of containers at that version using revisions. You can then scope changes to that revision. By default, these are named using some random string generated suffixed to the end of your container. 
+
+Az contianer app update lets you do what you think it would. This command also lets you update revision scoped changes.
+
+### Secrets
+
+You can store sensitve into container config balues. This are traditionally stored in scaled rules?
+
+These secrests are app scoped, and not revision scoped. Updating them doesn't generate new revisions. 
+
+Create secrets by passing the --secrets param. If you have added those at the app level you can reference them in the env vars.
+
+### DAPR
+
+DAPR lets you do microservices. It is open source cloud native computing foundation CNCF proect. This is a part of the linux foundatoin. it does a whole bunch of cool shit. 
+
+DAPR basically lets you spin up micro servies that you think you should need for your actual app.
+
+Six left babyyyy
