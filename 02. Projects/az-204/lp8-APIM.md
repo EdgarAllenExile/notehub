@@ -91,4 +91,30 @@ aborts the execution and returns either a default or custom response. Default is
 
 It is easy and common to access APIM through subscription keys. 
 
+You need to include a sub key in your request when calling these APIS. The gateway will reject calls without keys and not process them.
 
+A subscription is somehow a container for keys, devs can get these keys and publishers can create subs for consumrs.
+
+Subscriptions can be for all apis, single apis or products.
+
+this is default called ocp-apim-subscription-key and subscription-key
+
+## Certificates
+
+You can also secure APIs using TLS certs. You can then restrict them by a variety of things, including CA, thumbprint, subject or expiry date.
+
+Usualy you will also then inspect the cert and confirm it's not been tampered with. You should generally check who issued the cert and that you trust that person. Especialy if it's self signed.
+
+You can accept certs in the consumption tier, which is a good choice if you are using serverless technologies (functions).
+
+To do this, you must enable cert usage in the custom domains page. 
+
+Auth policies are set within the inbound rules in the gateway.
+
+### Hash
+
+Every cllient supplies a thumbprint, which is a hash creating using the cert properties. This ensures that the cert has not been modified or altered since creation. This print can be checked using your cert policy.
+
+You do this by negativey checking that it is not what you think it should be and then denying the request.
+
+Three left!
