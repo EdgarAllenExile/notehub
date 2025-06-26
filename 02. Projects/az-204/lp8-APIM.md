@@ -54,3 +54,41 @@ There are a variety of advanced policies you can use with APIM:
 - Log to event hub, send messagesto the event hub
 - Mock response, aborts pipelines and mocks responses
 - Retry, sets retry limits
+
+### Control Flow
+
+Choose policies and key words let you evaluate bools adn then funnel the requests through those policies. 
+
+Kinda like a switch statement, but only for bools, uses choose and when as opposed to switch and case.
+
+### Forward Request
+
+Kinda self explanatory
+
+### Limit Concurrency
+
+Prevents policies executing more than the specified number of times, once met, returns 429 Too Many Requests status code
+
+### Log to Event Hub
+
+Policy that sends messages in the specified format to an event hub defined by the logger entity. Used for saving requests or response contexts for analysis.
+
+### Mock Response
+
+Used to mock APIs and operations. Aborts normal execution and returns a mocked resonse. 
+
+The policy always tries to return responses of high fidelity and prefers examples if available. Can include schema if possible.
+
+### Retry
+
+Executes once and then a number of times, unless the provided condition becomes false or the count is exhausted.
+
+### Return resonse
+
+aborts the execution and returns either a default or custom response. Default is 200 with no body. Custom responses can be passed.
+
+## Subscriptions
+
+It is easy and common to access APIM through subscription keys. 
+
+
