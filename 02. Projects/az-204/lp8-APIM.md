@@ -46,4 +46,11 @@ You can also filter data elements, using the policies.
 
 ## Advaned Policies
 
+There are a variety of advanced policies you can use with APIM:
 
+- Control flow, which conditionally applies policies based on a bool
+- Forward request, forwards the request to the backend
+- Limit Concurrency, which prevents enclosed policies from executing more than a specified number of times
+- Log to event hub, send messagesto the event hub
+- Mock response, aborts pipelines and mocks responses
+- Retry, sets retry limits
