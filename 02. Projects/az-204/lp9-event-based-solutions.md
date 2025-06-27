@@ -42,4 +42,48 @@ Data objects are specific to each publisher.
 
 Events sources send events to the grid in an array, which can have several event objects. 
 
+In addition to the default schema, Event Grid ntively supports events in JSON implementation of CloudEvents v1.0 and http protocol. This is an open specification for describing event data. 
+
+This open spec ensures interop by providing a schema for publishing and consuing cloud based events:
+
+- Including uniform tooling
+- Routing
+- Event handling
+- Deserialising event schema
+
+This callows you to integrate across platforms which is nice. 
+
+Event Grid and CloudEvent schema are broadly the same, but for content-type field. For CloudEvents, that's application/cloudevents+json and for EventGrids it is just application/json.
+
+## Event Durability
+
+Event Grid tries to deliver each event at least once for each matching subscription immediately. It will then retry based on policies.
+
+By default it delivers one event at a time, with the payload being an array with a single event.
+
+NB: it does not guarentee order for event delivery.
+
+### Retries
+
+if a delivery fails, Event Grid will:
+
+- Retry, generally
+- Dead letter, if config error
+- drop, if dead letter not configured
+
+the event, based on the type of error. Usually returns 400 or 413.
+
+Retries are performed if not 400 or 413. Event Grid will wait 30s to retry, then after 30s it gets added back to the queue. After this the retry time grows exponentially.
+
+If response is detected after 3m, then Event Grid will try and take it off of the queue. But this might not work. There are small randomisatoins to all retry steps and also might intelligently skip certain retries if it detects that the endpoint is unhealthy, down, or overwhelmed. 
+
+Retry policy is configured on two groupnds, max number of attempts, with max being 30 and event time to live, with max number being 1440. Defaults to max for both. 
+
+### Batching 
+
+You can tell Event Grid to batch up events for delivery, which improves HTTP performance in high throughput scenarios. This is off by default and must be turned on per sub using portal.
+
+You can set max events per batch, between 1 and 5000 as well as batch size pref in kbs. Generally both settings will be overridden if there is not suitable events to fill them.
+
+Event Grid will delay delivery if it detects that an endpoint is battling. If 10x deliveries fail then the endpoint is assumed to be experiencing issues and event grid will delay all subsequent deliveries and retries. This protets unhealthy endpoints and the event grid system. Event grid can overwhelm unprotected systems otherwise. 
 
