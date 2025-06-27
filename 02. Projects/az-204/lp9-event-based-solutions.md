@@ -85,5 +85,111 @@ You can tell Event Grid to batch up events for delivery, which improves HTTP per
 
 You can set max events per batch, between 1 and 5000 as well as batch size pref in kbs. Generally both settings will be overridden if there is not suitable events to fill them.
 
+## Delay, Delivery & Deadletter events
+
 Event Grid will delay delivery if it detects that an endpoint is battling. If 10x deliveries fail then the endpoint is assumed to be experiencing issues and event grid will delay all subsequent deliveries and retries. This protets unhealthy endpoints and the event grid system. Event grid can overwhelm unprotected systems otherwise. 
 
+When the Event Grid cannot deliver an event within a set period of time, or after it has failed a number of times, it flogs it off to a storage account. 
+
+If either preconfigured retry or time to live limit is met, the event is dropped. 
+
+Event subscriptoins allow you to set up http headers that are included in delivered events. You can set up to 10 headers when creating an event. only webhooks, service bus, event hubs and hybrid connections accept custom headers. 
+
+## Access
+
+RBAC, using Reader, contributor, subscriptoin reader and subscriptoin contributor.
+
+This is not the actual permission ofc, which is Microsoft.EventGrid/EventSubscripions/{action}.
+
+## Web Hooks
+
+You can recieve events using web hooks.
+
+When this happens, the grid will POST an HTTP request to the endpoint within the body. This requiresthat you prove ownership of the hook before it starts.
+
+Logic apps, automations and functions do this automatically.
+
+### Endpoint Validation
+
+Grid endpoints can use synchronous or async handshakes to confirm. Sync handshakes require a validatoin code property, which is then confirmed and a validation code is returned in the response. Async is for tp solutions. You can also do manual handshakes but that sounds hard. 
+
+First you need to validation URL, then to compolete the handshake, you must find the URL in the event data and GET it. The URL is valid for 5m and if it doesn't work, the provisioning is set to FAILED.
+
+This authentication mechanism requires that the web hook send an HTTP status code of 200.
+
+### Filtering
+
+When creating an event sub you can filter by:n Event types, subject begins or ends with, or advance fields or operators.
+
+By default, all event types for an event source are sent to an endpoint. 
+
+# Event Hubs
+
+This is a big Data streaming platform and ingestion service. It can receieve and process miiiiiillions of events and then provide those analystics to stuff.
+
+Hubs are a native data streaming platform service in the cloud that can stream millions of events per second with low latency anywhere. 
+
+## Key Capabilities & Concepts
+
+Can use apache kafka and Advanced Messgae Queuing Protocol.
+
+Schema Registry, lets you manage teh schema of event streaming applications. 
+
+Real time processing for Stream Analytics.
+
+Concepts:
+
+- Producer applications that ingest data to a hub
+- Namespace which is the management container for the hub, allocates capacity, security and geo redundncy
+- Topics and Hubs
+- Partitions, which maange capcity
+- Consumer Applications, which combe through the event log and consume data
+- Consumer Group, reads from the event hub and enables multiple consumers to read the same data independantly.
+
+## Event Hubs Capture
+
+Capture lets you process data on the same stream at variable rates. The Hubs Capture lets you specify your own receptical that stores data. it is written in Apache Avro. 
+
+This lets you window to control capture, which sets a min size and time to capture. Each trigger causes a capture operation and each partition captures independantly.
+
+Traffic to hubs is managed using throughput units. A single throughput unit allows approx 1mb per second or 1,000 events per second of ingress and double the amount of ingress. 
+
+## Processing
+
+Scaling your processing application requires you to run multiple versions of the app and have it balance the load amoungst itself. 
+
+Generally use the EventProcessorClient (previously host) to do this. 
+
+NB: Important to rememver partitioned consumers, this enables high scale by removing bottleknecks and facilitating end to end paralelism. What does this mean?
+
+Event processers usually own and process for one or more partitions. This is distributed among instances. Each processer communicates its state to the store and communicate with other instances through it. This is how it load balances. 
+
+When you create a processor you must note what function processeses events. You must handle it. Be as fast as possible. If you need to do two things (write and route) use two groups and two processors to split it up.
+
+Checkpointing is a process that each processor marks the position of the last successfully processed event within a partition. Checkpointing is typically done within the function that processes the events and happens per partition. 
+
+If a processor disconnects from a partition, another instance can resume processing at that checkpoint. If this happens, the processor will be told to skip to the checkpoint by the event hub. This allows multistage processes to mark certainstages as complete. 
+
+Generally processing is done sequentially. Subsequent events run in the background for other threads. Different partitions run concurrently and each partition is synchronised.
+
+## Access
+
+Both SAS and Entra are used here. Generally uses the Owner, Sender and Receiver roles. 
+
+Managed identities use RBAC settings to determine roles and access hubs using the right scope. 
+
+To use a SAS, your client token must have manage rights and listen priverleges. This is defined at the entity not hte consumer level.
+
+## Common Operations 
+
+Inspect Event hubs using the client library.
+
+Publish Events using the client library.
+
+Read events using the client library.
+
+Read events from a specific hubs partition using the client library.
+
+Process events using the processor client library.
+
+Two to go.
