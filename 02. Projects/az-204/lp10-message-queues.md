@@ -91,3 +91,44 @@ Furhter, if you are multiplexing and want many to many, then you reply to sesssi
 Payloads are always stored in binary. ContentType enables apps to describe the content and suggest a way to serialise them, according to MIME Type. 
 
 There is also some fancy hidden serialisation that you can use in .NET Framework and with the SBMP protocol, that hopefully I neer have to deal with. This rquires use of AMQP messaging and HTTP clients don't like it.
+
+
+## Queue Storage
+
+Queue storage lets you hold a large number of messages. You can access them through http or https from anyehere.
+
+Queued messages can be up to 64kb in size. Queues can hold as many messages as you  an fit in the storage account. Common use case would be to create a work queue to process async. 
+
+Queues are generally componsed of four parts:
+
+- URL to address the queue in the following format: `https://storageAccount.queue.core.windows.net/queueName`
+- The Storage account that holds the queue
+- The queue itself, name all lowercase
+- The messages, which can be set to never expire
+
+### Queues and .NET
+
+Generally you can use .NET libs to manage these things:
+
+- Az.Core for primitives, abstractions and helpers
+- Az.Storage.Common, common lib
+- Az.Storage.queues, Client lib
+- SystemConfig.config manager, config files for clients
+
+#### Dealing with queues
+
+Generally you want to create a new Queue Service Client, then create a the queue if it doesn't exist.
+
+Insert messages into the queue using SentMessage.
+
+Peek messages using PeekMessages.
+
+Update contents using UpdateMessage.
+
+Dequeue using Receive Messages, then DeleteMessage to confirm that action post-processing.
+
+Queue Length, using Getproperties then Approximate Messages Count property
+
+You can delete and entire queue using delete on the queue object
+
+Last one babyyyyy
