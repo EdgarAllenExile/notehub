@@ -42,6 +42,7 @@ Why on earth are there so many things to know about Azure Cosmos Db??
 - namespaces in containers let you isolate things across repository
     - Interestingly, the repository is the part of an ACR that reprents a collection of container images or artifacts that have the smae name but different tags (versions) tags specify the version you want to use of that image
 - Blobs are still the only thing that supports user delegated SAS within a storage account
+- Why do you define meta data with a PUT and not a POST
 
 ## Incorrect Answers & Explanations
 
@@ -173,3 +174,9 @@ WHY IS EVENTUAL THE MAX THROUGHPUT. It is because you forgot how to think about 
 If you are setting up storage policy for blobs you need to know about prefix match filter, which starts with a container name.
 
 The service principal associated with an app cannot be explicitly deleted when you are ysing syste-assigned identity. It is deleted when you delete the resource.
+
+if you have a multi instance app service and you want to route a client to the same instance all of the time, you use AAR Affinity
+
+If you are adding partitions to an event hub, you use flags like you normally fucking would, --apartition-group 12, you also don't need to worry about the consumer-group because we aren't at that stage yet.
+
+You can filter service bus topics via SQL, which I do think I knew
