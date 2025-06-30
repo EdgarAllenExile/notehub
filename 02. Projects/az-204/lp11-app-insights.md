@@ -49,3 +49,27 @@ Newer Az SDKs preaggregate. But App Insights will assist with preaggregation on 
 You can also do ingest sampling, which preaggregates events before sapling so that they never impact the accuracy of your metrics.
 
 ## Availability Tests
+
+You can create up to 100 availability tests per app insights instance. These do not require any changes to the websights, just ping them. 
+
+The tests can include standard tests, which sends an http request which validates response, measures performance and can include other tests. these other tests include cert validity, life time check, http request verb checks and http header / daata checks.
+
+You can also have custom TrackAvailability checks, which lets you create a custom app to run these tests and use the TackAvailability method in your app to do this. 
+
+Lastly there is the classic URL ping tests. Which are going away and are like the standard tests only less good.
+
+## Trouble Shooting App Performance using App Mapp
+
+The applicatoin mapp lets you spot performance bottlenecks or hotspots across all coponents of your app. Each node will show performance and alert status. 
+
+From there you can also dig down into diagnostics and advisor recommendations. 
+
+In this instnace, each component is an observed dependancy that you can stick App insights on and might not include external services.
+
+App insights will discover components using http dependancy calls made between servers using the App Insights SDK.
+
+This is done through the progressive discovery of components, hitting update map will reresh all components discovered to that point. 
+
+This lets you visualise components and complete app topologies with many different components.
+
+all done time to stuuuudy
