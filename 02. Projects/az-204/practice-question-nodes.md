@@ -23,6 +23,8 @@ Why on earth are there so many things to know about Azure Cosmos Db??
 - the : character lets you define and set namespaces for keys in a KV
 - Enabling CORS on the CLI is actually just as simple as az webapp cors add
 - If you want to read an item from a cosmos db you must supply the id and partition key
+- Dedicated name spaces for each event hubs tenant offers the highest data and performance isolation in multi tenant environments
+- 
 
 ## Incorrect Answers & Explanations
 
@@ -117,4 +119,14 @@ If you want to restrict access using APIM, then it's likely that you should cera
 
 I know I have added this, but if you are enforcing policy order in APIM, you use the BASE Element.
 
+Always use the staging slots
+- Especially if you want to minimise locked files
 
+Rate throttling
+- If you want to throttle for  a third party service, use maxConcurrentRequests and maxOutstandingRequests
+- dynamicThrottlesEnabled will only work for internal throttling based on system performance indicators
+
+App Insights Slow Response Time
+- You want to set App Insights web tests and alerts, which mock user interaction and respond
+- You don't want Resource Health alert because that's for infra issues
+- Nor service health or advisor alerts because that's for MS updates and best practice respectively
