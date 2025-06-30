@@ -35,6 +35,13 @@ Why on earth are there so many things to know about Azure Cosmos Db??
 - Restart OnFailure does what you think it should in Container instances yaml files
 - Container apps let you run general purpose containers and make micro services, it differs from container instances which do not support scaling, load balancing or revisions
 - If you're setitng key expiry, first use a string for the time in seconds, then chuck in a TimeSpan.FromSeconds in there for good measure.
+- When you are doing APIM access, you define a subscription for devs to subscribe to and then a product to scope that subscription to. That lets your devs subscribe to the subscription and their access will be scoped to that product.
+- if you're doing APIM header manipulation, then inbound is for incoming calls, backend is for manip and outbound is for forwarding them on. You use them in that order if you need to alter things.
+- ON APIM, if you want to adjust how APIs function, you use policies, this is what I described above.
+- Container Groups are collections of containers that get scheduled on the host machine. 
+- namespaces in containers let you isolate things across repository
+    - Interestingly, the repository is the part of an ACR that reprents a collection of container images or artifacts that have the smae name but different tags (versions) tags specify the version you want to use of that image
+- Blobs are still the only thing that supports user delegated SAS within a storage account
 
 ## Incorrect Answers & Explanations
 
@@ -154,3 +161,15 @@ if you need FIFO ini your azure storage bus, then you are looking for message se
 Creating a blank APIM instance allows for precise controls over access, this can be further adjusted via jwt validation and rate limiting which enhances security and performance. 
 
 If you have IOT network with thicc throughput then you want an event hub. it is optimised for large volumes of realtime events being ingested.
+    - Conversely, Event Grid is for routing and serverless applications, service bus is for messaging patterns.
+
+WHY IS EVENTUAL THE MAX THROUGHPUT. It is because you forgot how to think about it. FIFO on one end, throughput on the other. Strong is FIFO, Eventual is throughput.
+- Eventual because it doesn't care, then bounded because it mostly doesn't care, then session because it only cares about the batch, then bounded but that probably depends on what you send and then Strong, because it does care.
+    - I accidently really like the caring thing. Bounded staleness cares about it, session kinda does, strong really does etc.
+    - Still not 100% on session vs prefix.
+    - Session is monotonic
+    - Bounded staleness is additional to consistent prefix because bounded stalenes is also bound by the staleness requirements.
+
+If you are setting up storage policy for blobs you need to know about prefix match filter, which starts with a container name.
+
+The service principal associated with an app cannot be explicitly deleted when you are ysing syste-assigned identity. It is deleted when you delete the resource.
