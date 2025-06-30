@@ -24,7 +24,17 @@ Why on earth are there so many things to know about Azure Cosmos Db??
 - Enabling CORS on the CLI is actually just as simple as az webapp cors add
 - If you want to read an item from a cosmos db you must supply the id and partition key
 - Dedicated name spaces for each event hubs tenant offers the highest data and performance isolation in multi tenant environments
-- 
+- you grant app permissions to access graph in a multi tenant application
+    - This is because an App is a singular Entra ID app in a single Tenant, hence the app needs the permissions.
+    - This includes situations in which you use multiple tenants, presumably the app exists in a home tenant, thus has one app object.
+- Blob containers hold SAS access. The service can access the keys but cannot access policies, same as the storage access.
+- When it comes to managed identity
+    - it is user managed requires user rotated secrets
+    - Service principal and cert requires manual rotation of the cert
+    - Service principal and secret also needs to rotate the secret which can be annoying.
+- Restart OnFailure does what you think it should in Container instances yaml files
+- Container apps let you run general purpose containers and make micro services, it differs from container instances which do not support scaling, load balancing or revisions
+- If you're setitng key expiry, first use a string for the time in seconds, then chuck in a TimeSpan.FromSeconds in there for good measure.
 
 ## Incorrect Answers & Explanations
 
@@ -130,3 +140,17 @@ App Insights Slow Response Time
 - You want to set App Insights web tests and alerts, which mock user interaction and respond
 - You don't want Resource Health alert because that's for infra issues
 - Nor service health or advisor alerts because that's for MS updates and best practice respectively
+
+If you want to do meta data for photos, use a PUT request because that updates existing blobs;.
+
+Azure Cache for Redis -> If you want data loss prevention, low storage cost and optimised performance you should use a redis db with soft delete off. This is because RDB persistence backups have minimal impact on performance and the disabiling of soft delete means that redis can minimize storage costs by removing old data.
+
+Just look for StringSet in the big old CLI command questions.
+
+If you are self hosting a gateway or really any Azure container, you should use the three digit version number. 
+
+if you need FIFO ini your azure storage bus, then you are looking for message sessions. This enables you to enable exclusive ordered handling of messages.
+
+Creating a blank APIM instance allows for precise controls over access, this can be further adjusted via jwt validation and rate limiting which enhances security and performance. 
+
+If you have IOT network with thicc throughput then you want an event hub. it is optimised for large volumes of realtime events being ingested.
