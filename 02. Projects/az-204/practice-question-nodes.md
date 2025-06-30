@@ -21,6 +21,8 @@ Why on earth are there so many things to know about Azure Cosmos Db??
 - Consistent Prefix ensures that operations in the same batch are visible together
 - You Configure an APIM Policy to rate limit calls from a single source
 - the : character lets you define and set namespaces for keys in a KV
+- Enabling CORS on the CLI is actually just as simple as az webapp cors add
+- If you want to read an item from a cosmos db you must supply the id and partition key
 
 ## Incorrect Answers & Explanations
 
@@ -100,3 +102,19 @@ Messaging Sessions guarentee FIFO message processing
 When configuring APIM, you must pase the base element if you want to be able to enforce an evaluation order
 
 System Assigned Managed Identity will ensure that resources can access each other and that one will be deleted when the other is
+
+If you need Function Apps to avoid cold starts, then you must usethe premium plan.
+
+If you want to review a web app logs for 400 code errors above 400, then you must use the detailed errors log.
+
+Scaling a functions app can be limited using functoinAppScaleLimit property
+- if so, consider setting it to approx 10. Default is 200 and this will allow you to control scaling.
+
+If you're starting up a container app and want to specify the image, use:
+- az containerapp up --source ....
+
+If you want to restrict access using APIM, then it's likely that you should cerate a new subscripiotn with product scope.
+
+I know I have added this, but if you are enforcing policy order in APIM, you use the BASE Element.
+
+

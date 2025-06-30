@@ -1,4 +1,8 @@
 # To Learn
+what is the difference between multicasting to event hub and multiplexing??
+- I actually worked this out pretty quickly, multicasting is a single stream through one queue
+- Multiplexing is multiple streams through the same queue, request/reply enables it to reply multiple times
+- Multicasting enables multiple consumers, multiplexing does now
 
 Still not toally sure on the difference between the App Service Plan vs Environment.
 
