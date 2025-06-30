@@ -72,4 +72,6 @@ This is done through the progressive discovery of components, hitting update map
 
 This lets you visualise components and complete app topologies with many different components.
 
+If you are implementing an authenticatoin test, suggested to use a custom track availability test.
+
 all done time to stuuuudy
