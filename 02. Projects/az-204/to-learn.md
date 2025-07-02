@@ -24,3 +24,7 @@ I should really go over the DIY event feed thing:
 - Lease container is the state management container which other things are looking at
 - Delegate does the work
 - Compute instance is the vm that actually does the work, is not distinct from the above
+
+When to use App Config vs Key vault
+
+Creating Alerts in the Portal
