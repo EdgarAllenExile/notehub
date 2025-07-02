@@ -15,3 +15,5 @@ The headers on the requrest to the storage account are:
 So, how do we go from the request id or the client request id for that matter, to the content or at least useful info about the request?
 
 omg we use SAS keys for something
+
+So INT-OME-01 is a container instance, I assume that just means it's the instance of the container. Then we have the respository.
