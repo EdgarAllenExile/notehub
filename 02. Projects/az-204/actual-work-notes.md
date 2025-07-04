@@ -21,3 +21,17 @@ So INT-OME-01 is a container instance, I assume that just means it's the instanc
 ## Service Bus
 
 So the API drops things in to the service bus, it has a variety of queues, but we are interested in the topic. From the topic, we have two subscriptions. Somehow there is a transformation going from the subscription to the logic app that I cannot see.
+
+## Function Apps
+
+So from the SB, we then offload them with a function app, Then process them using a logic app?
+
+Annoyingly, the version that is in production is in the wapf project for some reason
+
+What the fuck is this configuration. Our Function app env settings are passed through to the function app in question either in the release config or the actual app service Function App page????
+
+Oh we do that "%thing%" variable replacement thing!
+
+## Logic Apps
+
+Our logic apps are the ones that have the stupid GUI editor. Also they are actually in the app service plan thing. They are l2v2, single instance, not zone redundant and on a windows os/
