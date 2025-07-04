@@ -22,6 +22,10 @@ So INT-OME-01 is a container instance, I assume that just means it's the instanc
 
 So the API drops things in to the service bus, it has a variety of queues, but we are interested in the topic. From the topic, we have two subscriptions. Somehow there is a transformation going from the subscription to the logic app that I cannot see.
 
+Bus -> Topic -> Subscription
+
+Filters kinda jank but I think I am working it out.
+
 ## Function Apps
 
 So from the SB, we then offload them with a function app, Then process them using a logic app?
