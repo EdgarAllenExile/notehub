@@ -17,3 +17,7 @@ So, how do we go from the request id or the client request id for that matter, t
 omg we use SAS keys for something
 
 So INT-OME-01 is a container instance, I assume that just means it's the instance of the container. Then we have the respository.
+
+## Service Bus
+
+So the API drops things in to the service bus, it has a variety of queues, but we are interested in the topic. From the topic, we have two subscriptions. Somehow there is a transformation going from the subscription to the logic app that I cannot see.
