@@ -9,3 +9,7 @@
 ### Configuring Instramentation Settings
 
 1. Within the Monitor + Secure Tab
+
+## Blob Services
+
+1. Create 
