@@ -28,3 +28,10 @@ I should really go over the DIY event feed thing:
 When to use App Config vs Key vault
 
 Creating Alerts in the Portal
+
+
+Some of the connections and other kiiinda networky things from the App Service part.
+
+what the different blob storage rules look like in json format.
+
+Honestly jsut about all of the different code snippet parts I have skipped...
