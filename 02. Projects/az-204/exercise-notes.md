@@ -12,4 +12,3 @@
 
 ## Blob Services
 
-1. Create 

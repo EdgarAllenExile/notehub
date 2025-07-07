@@ -30,3 +30,9 @@ Other things includ you can include `<forward-request timeout="time in seconds" 
 - `set-header`
 - `set-body`
 - `set-status`
+
+## Finding Outbound ip addresses
+
+```az webapp show \ --rgr --name --query --outputa```
+
+
