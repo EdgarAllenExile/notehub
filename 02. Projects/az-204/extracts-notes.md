@@ -35,4 +35,15 @@ Other things includ you can include `<forward-request timeout="time in seconds" 
 
 ```az webapp show \ --rgr --name --query --outputa```
 
+## blob storage name
+
+default endpoint for blob storage is: `http://storageaccount.blob.core.windows.net`
+
+From there you can get to the container by appending `/container`
+
+From there you can get to teh blob by appending `/blob`
+
+Hence, all together it is:
+`http://storageaccount.blob.core.windows.net/container/blob`
+
 
