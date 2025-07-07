@@ -1,6 +1,5 @@
 # Usecase for Each Major Feature
 
-
 App Services
  - Sort of swiss army knife of hosting platforms, allowing straight up apps to be deployed to it but also function apps nd containers.
 
@@ -93,11 +92,24 @@ Container Apps
 - Container Apps are closer to functions than dedicated container instances
 - As a result, you can actually host your functions on container apps if you want to include custom libs, migrate them or want to offshore your grunt / overhead
 
+Service Principal
+- A service principal is the represetation of an application in the Identity platform
+- This can be an application on its own, a managed identity or a legacy app
+- Whilst an app object represents the app in its entirety, the service principal is how that app is represented in each specific tenant in which it exists
+
+MS Graph
+- Graph can be used to query just about anything
+- Remember to use principals of least access. Only grant perms that are required and no more
+- If you have an interactive app, use delegated perms, if you have an app to app, use app perms
+
 User Managed Identity
 
 System Managed Identity
 
 SAS Tokens
+- Shared Access Signatures are signed URIs that include tokens and contain query params. There are user delegated (on bealf of the user), service delegated (for use with a storage account) and account sas (for use with storage account service level)
+- User a SAS when clients do not have their own permissions to access your services, such as file storage 
+- Also used to move blobs around or to copy files to blobs or files to different storage accounts
 
 APIM
 

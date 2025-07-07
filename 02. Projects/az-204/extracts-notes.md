@@ -46,4 +46,45 @@ From there you can get to teh blob by appending `/blob`
 Hence, all together it is:
 `http://storageaccount.blob.core.windows.net/container/blob`
 
+## Client Apps and Auth
 
+You must provide the following:
+
+- Client ID
+- Tenant ID
+- Instance URL / Identity provider
+- Client credentials (clent secret or certificate)
+- Redirect URL
+
+From there you can call the builder, `IPublicClientApplication app = PublicClientApplicationBiulder.Create(clientId).Build.();`
+
+You can also pass in `.WithClientSecret(secret).WithRedirect()` at this stage.
+
+## SAS Token Composition
+
+AS tokens havethe following:
+
+`http://url.blob.core.windows.net/container/blob/sp=r&st=dateTime&se=DateTime&sv=ver&sr=b&sig=string`
+
+Each part is important. URL is the blob identifier in this instance
+
+sp=r is access rights (add create delete list read write)
+st=dateTime is when access starts
+se=dateTIme is when access ends
+sv=ver is the storage API version number
+sr=b is the storage being accessed (blob)
+sig=string is the signature
+
+## Graph Queries
+
+```{http verb} https://graph.microsoft.com/version/resource?{query}```
+
+HTTP Method can be basically any of the verbs. Post to create, Get to read, patch to update, put to replace and delete to delete.
+
+version is generally 1.0 or beta.
+
+resource is the identifier of the resource you're querying. this can be me/messages to return the messgaes you have sent etc.
+
+Query params, which can be either REST method params or ODATA query options. This can be `filter=emailaddress eq riley@mercer.com` as an example
+
+Graph Queries generally return, HTTP status code, response message and then the link to the next data.
