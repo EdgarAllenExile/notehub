@@ -24,7 +24,7 @@ So the API drops things in to the service bus, it has a variety of queues, but w
 
 Bus -> Topic -> Subscription
 
-Filters kinda jank but I think I am working it out.
+Filters kinda jank but I think I am working it out. Actually no, Filters are still kinda jank. As an example, to test booleans, you use `user.property = TRUE` as opposed to = 1 or IS TRUE
 
 ## Function Apps
 
@@ -39,3 +39,5 @@ Oh we do that "%thing%" variable replacement thing!
 ## Logic Apps
 
 Our logic apps are the ones that have the stupid GUI editor. Also they are actually in the app service plan thing. They are l2v2, single instance, not zone redundant and on a windows os/
+
+

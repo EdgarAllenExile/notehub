@@ -88,3 +88,20 @@ resource is the identifier of the resource you're querying. this can be me/messa
 Query params, which can be either REST method params or ODATA query options. This can be `filter=emailaddress eq riley@mercer.com` as an example
 
 Graph Queries generally return, HTTP status code, response message and then the link to the next data.
+
+# User and System managed Identities
+
+if you want to set up managed identity and use the Azure CLI, then you can chuck in a `az app config identity assign` commadn and pass in some flags such as name of config and RGR
+
+if you're using user managed identity, then it's much the smae, but you are creating that identity as opposed to assigning it. Hence the command is something like this: `az identity create --rgr rgr --name name`
+
+
+## Queues and shit
+
+If you're making a queue, make the queue client, then you can just quip one up using queueClient.Createifnotexists
+
+Inserting messages onto the queue pretty simples. `queue client.sendMessage(message);`
+
+Peeking a message: `if client.exists, peeked message = client.peek messages`
+
+You can also update messages, but first you must dequeue them using client.ReceiveMessages()

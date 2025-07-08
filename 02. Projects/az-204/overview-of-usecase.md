@@ -87,6 +87,7 @@ Container Groups
 - I think these are effectively docker compose scripts
 
 Container Registry
+- DIY Docker Hub, where you store the images that you would like to use in your containers
 
 Container Apps
 - Container Apps are closer to functions than dedicated container instances
@@ -103,8 +104,15 @@ MS Graph
 - If you have an interactive app, use delegated perms, if you have an app to app, use app perms
 
 User Managed Identity
+- Creates a standalone Azure Resource, which is then assinged to an Azure service instance
+- Lives and dies with whatever it has been assigned to
+- Generally used for when multiple things want to use that identity, such as an app that runs on multiple vms
+- Also inludes when workloads need to be pre authed or the underlying resources are cycled frequently
 
 System Managed Identity
+- Azure creates the identity for you, with credentials being assigned to that resource
+- If underlying resource is deleted, identity is deleted
+- Generally used for workloads within a single az resource, or if you need independant identities, such as an app that runs on a single vm
 
 SAS Tokens
 - Shared Access Signatures are signed URIs that include tokens and contain query params. There are user delegated (on bealf of the user), service delegated (for use with a storage account) and account sas (for use with storage account service level)
@@ -134,4 +142,12 @@ Storage Queue
 
 App Insights
 
+Key Vault
+- KVS solve three main problems, secret management (inc tokens, passwords, certs, keys), secret management (public and private encryption keys) and certificate management (store full on SSL/TLS certs)
+- Can be standard or premium, with premium basically giving you hardware backed keys
+- General usecase is for centralising, securing and managing your app secrets
 
+App Config
+- App config allows you to centralise and control access to your app's configuration information
+- If you want to manage your own app config and keys, then you need to be at least standard tier, have an AZ KVs with soft delete and purge protectoin enabled and have RSA or HSM kes withou the key vault
+    - From there just assign a managed identity to that instance and grant that identity the GET WRAP and UNWRAP perms

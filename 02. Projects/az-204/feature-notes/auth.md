@@ -23,3 +23,21 @@ You can use public or confidential clients. Public clients can only use user aut
 ## Graph
 
 Generally, graph wants you to use GET to read, POST to create, PATCH to update, PUT to replace and DELETE to remove
+
+## KVS
+
+You can auth for a KVS in three main ways:
+
+- Manged identity and entra manged identity
+- Service principal and secret / certificate (generally use secret, but app to app useful)
+
+There are some best practices to remember:
+
+- Use seperate KVS per env
+- Access control
+- backup & recovery
+- logging
+
+can be beneficial to auth using a REST token style set up. I don't know why or for what purpose, but it does work.
+
+If you try and do this though, you must include an Authorization header. Requests that come without such things will be returned as 401s with the WWW-Authenticate header.
