@@ -12,3 +12,9 @@ There are a variety of things to keep in mind when service bussing, such as what
 ## Storage queue
 
 Your storage queue URL is storageAccount.queue.core.windows.net/queueName then the message is in the request body.
+
+## Change Feed Processing
+
+If you are so inclined, you can read the cosmos db change feed, either pulling htem off or gettin them pushed to you.
+
+Usually a push model is used. Geerally this is done using an Azure Function, using the trigger for cosmos db

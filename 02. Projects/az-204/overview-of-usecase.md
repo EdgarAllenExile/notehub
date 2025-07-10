@@ -71,6 +71,8 @@ CosmosDB triggers
     - They cannot take inputs
 - Post-triggers let you perform actions after a thing, generally include meta data updating
     - They run as part of the transaction and will cancel it if they fail
+- The answer to this question could definitely just be use a function
+    - From there your host instance, will do some amount of reading the feed, sleeping sending them to the delegate and then process them
 
 CosmosDB Change Feed
 - Kinda like an event hub on its own, the change feed lets you monitor changes to the DB
@@ -120,10 +122,23 @@ SAS Tokens
 - Also used to move blobs around or to copy files to blobs or files to different storage accounts
 
 APIM
+- Mangement utilities for APIs, comprised of three major components, API Gateway (send and recieve calls), management plane (provision services, do scheme things, restrict access) and developer portal (Read doco, generate API keys)
 
 APIM Gateways
+- The gateway is the outwardly facing portion of APIM. It handles proxying services, routing requests and misc tasks such as auths and rate limiting
+- Advantages of a gateway are that you can keep things simple and decoupled, using a single point of contact between users and services exposed on possibly publicly facing endpoints over a nice protocol such as HTTP or Web Socket
+
+APIM Policies
+- APIM policies are written in xml, and can be inbound, backend, outbound or on-error
+- They can even filter CORS responses and things of the like
+- Advanded policies include, logic flows, return resonses, logging ot event hubs, retry poicies, mocked responses, limit concurrency and forward requests
+
+APIM Subscriptions
+- Generally, APIs are secured via subscription. That is, your clients get a subscription, which is a private key and a public key, they use that to verify (via adding to http header) and they're away
 
 Event Hub
+- Event hub is a native data streaming service that can ingest and store streaming data and use real time analytics
+- Analytics are usually done with like Azure Stream analytics and the cute ittle no code editor
 
 Event Grid
 - Pub Sub message distribution ideally focused on platform integration and IoT devices
@@ -143,6 +158,12 @@ Storage Queue
 - Queues live in your storage accounts
 
 App Insights
+- App insights is a logging and telemetry service to monitor your application. You can stick it in at run time, dev time, mobile usage or even just availability tests
+- If you're looking to test your api using app insights, you probably want the standard test, if you want to get fancy with it you can use a custom tackavailability test or you can use the classic URL ping test.
+
+App Insight Metrics
+- You can use either log metrics, which are collected on the go by the app and provide detailed overview or standard metrics which are preaggregated by Azure and allow for good querying.
+- If you're calling the logger that's log basd metrics, if you are just looking at live metrics, those are preaggregated.
 
 Key Vault
 - KVS solve three main problems, secret management (inc tokens, passwords, certs, keys), secret management (public and private encryption keys) and certificate management (store full on SSL/TLS certs)
