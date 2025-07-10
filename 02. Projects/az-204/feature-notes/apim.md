@@ -55,6 +55,10 @@ Once you are within the statements to actually with within, you can then do thin
 
 Referencing the above, you would have policies inbound before the base and then inbound / backend / outbound / error afterwards.
 
+the `< /base>` element is used to control the order of policy execution. This element ensures that policies defined at higher scope are executed before those at the current scope. This allows consistency across different apis without needing to reproduce matching code each time.
+
+I think it is effectively a way to import policies set elsewhere? Or at least apply others such as `cross-domain` first.
+
 ### Conditional Policies
 
 You can also use `<cross-domain />` at the start to execute before anything else and call arbitrary things such as `<find-and-replace>` or similar.
