@@ -1,21 +1,23 @@
 # Usecase for Each Major Feature
 
 App Services
- - Sort of swiss army knife of hosting platforms, allowing straight up apps to be deployed to it but also function apps nd containers.
+ - Sort of swiss army knife of hosting platforms, allowing straight up apps to be deployed to it but also function apps nd containers
+ - An App service is the PaaS equivalent of Az vms which are IaaS
 
-App Service Environment
-- ASE is an isolated and dedicated environment for running apps hosted on app services.
-- ASEs run in the single tenant isolated pricing tier.
-- ASE == isolated
-
-App Service Tiers
+## App Service Tiers
 - Shared Compute, free and standard, for dev and testing share resources between other app services.
 - dedicated compute, basic, standard, premiumv1-3 lets you run on dedicated vms.
 - Isolated, isolated v1-2, dedicated network etc.
 
+App Service Environment
+- ASE is an isolated and dedicated environment for running apps hosted on app services
+- ASEs run in the single tenant isolated pricing tier
+- ASE == isolated
+
 App Service Plan
 - You should consider sticking things in an app service plan when you want to house a bunch of shit together
 - This includes fucntion apps, which can be beneficial if you want predictable billing, larger compute or ASE support
+- An ASP is a shared-multiservice env, whilst ASEs are isolated and dedicated shared envs
 
 Azure Functions
 - Serverless job doers written in script language. Auto scales and pay per use pricing.
@@ -26,7 +28,8 @@ Azure Functions
 - Once you start getting into large orchestratoins, you can consider durable functions, which let you write stateful functions in a serverless compute env
 
 Azure Logic Apps
-- Also function doers however are written using a GUI and are  closer to automate scripts
+- Also function doers however are written using a GUI and are closer to automate scripts
+- Advantage being that they integrate better and differently to Function Apps, also aimed at non-traditional devs I think
 
 Function Tiers
 - Consumption, no containers, generally available, 5 or 30s timeout
@@ -35,15 +38,16 @@ Function Tiers
 - Dedicated plan, run functions within app services, can also take advantage of ASE
 - Container Apps, you can also containerise your functions and run them in container apps, this is closer to hosting an actual container and is generally for micro services
 
-HTTP Headers
+## HTTP Headers
 - CONTAINERS only let you have the two headers, blobs themselves have a whole bunch
+- There is actually a whole bunch of HTTP header related things that I should learn
 
 Blob Storage
-- Blob storage (live in storage accounts) stores unstructured data, can be either standard or premium (solid state drives, blobk blobs, page blobs or file shares)
+- Blob storage (live in containers and then storage accounts) store unstructured data, can be either standard or premium (solid state drives, blobk blobs, page blobs or file shares)
 - Storage Account -> Containers -> Blobs (block / append / page)
-- Blob encryptoin can be either v1 or v2
+- Blob encryption can be either v1 or v2
     - v1 uses GCM mode with AES, can be used for all types
-    - v2 uses CBC , can only be used with blob and que storage
+    - v2 uses CBC with AES, can only be used with blob and que storage
 
 Blob Storage Tiers
 - Standard or General Purpose, which lets you store everything
@@ -57,7 +61,7 @@ Blob Access Tiers
 - Cold, 90 days min storage
 - Archive, 180 days can take like 15hrs
 
-CosmosBD
+## CosmosDb
 - Cosmos DB is obviously noSQL db
 - Consistency Levels:
     - Strong
@@ -84,9 +88,10 @@ Container Instances
 - Container instances are when you want isolated simple operations such as build jobs and automations
 - Container instances are fast, easy to access, secure and persistant. They can run both Linux and Windows images
 
-Container Groups
-- Container instances live in container groups
+## Container Groups
+- Container instances live in container groups, which allows them to share storage and networking without mounting it as explicitly
 - I think these are effectively docker compose scripts
+- Can you have container app groups?
 
 Container Registry
 - DIY Docker Hub, where you store the images that you would like to use in your containers
@@ -99,6 +104,7 @@ Service Principal
 - A service principal is the represetation of an application in the Identity platform
 - This can be an application on its own, a managed identity or a legacy app
 - Whilst an app object represents the app in its entirety, the service principal is how that app is represented in each specific tenant in which it exists
+- It is the incarnation of the app for the purpose of authenticating, and interacting with other Azure service
 
 MS Graph
 - Graph can be used to query just about anything
@@ -116,7 +122,7 @@ System Managed Identity
 - If underlying resource is deleted, identity is deleted
 - Generally used for workloads within a single az resource, or if you need independant identities, such as an app that runs on a single vm
 
-SAS Tokens
+## SAS Tokens
 - Shared Access Signatures are signed URIs that include tokens and contain query params. There are user delegated (on bealf of the user), service delegated (for use with a storage account) and account sas (for use with storage account service level)
 - User a SAS when clients do not have their own permissions to access your services, such as file storage 
 - Also used to move blobs around or to copy files to blobs or files to different storage accounts
