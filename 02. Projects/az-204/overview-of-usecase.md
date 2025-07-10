@@ -110,6 +110,7 @@ MS Graph
 - Graph can be used to query just about anything
 - Remember to use principals of least access. Only grant perms that are required and no more
 - If you have an interactive app, use delegated perms, if you have an app to app, use app perms
+- If you're reading from Graph, then you first must create a request object, then send that using the GetAsync call
 
 User Managed Identity
 - Creates a standalone Azure Resource, which is then assinged to an Azure service instance
@@ -126,6 +127,8 @@ System Managed Identity
 - Shared Access Signatures are signed URIs that include tokens and contain query params. There are user delegated (on bealf of the user), service delegated (for use with a storage account) and account sas (for use with storage account service level)
 - User a SAS when clients do not have their own permissions to access your services, such as file storage 
 - Also used to move blobs around or to copy files to blobs or files to different storage accounts
+- SAS tokens are used to authenticate to Event hubs, in which situation they can be given three roles Data Owner, Data Sender and Data Receiver
+    - In this situation, you can still use Identity
 
 APIM
 - Mangement utilities for APIs, comprised of three major components, API Gateway (send and recieve calls), management plane (provision services, do scheme things, restrict access) and developer portal (Read doco, generate API keys)
@@ -145,6 +148,7 @@ APIM Subscriptions
 Event Hub
 - Event hub is a native data streaming service that can ingest and store streaming data and use real time analytics
 - Analytics are usually done with like Azure Stream analytics and the cute ittle no code editor
+- If you are either producing or consuming from an event hub, then you must make an EventHubConsumer/Producer client, actually if you are consuming them properly then you should probably just make a Event Processor Client
 
 Event Grid
 - Pub Sub message distribution ideally focused on platform integration and IoT devices
@@ -180,3 +184,5 @@ App Config
 - App config allows you to centralise and control access to your app's configuration information
 - If you want to manage your own app config and keys, then you need to be at least standard tier, have an AZ KVs with soft delete and purge protectoin enabled and have RSA or HSM kes withou the key vault
     - From there just assign a managed identity to that instance and grant that identity the GET WRAP and UNWRAP perms
+
+What is the interplay between an App Config vs a Key vault?
