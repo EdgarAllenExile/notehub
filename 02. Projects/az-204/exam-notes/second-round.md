@@ -26,3 +26,5 @@ System vs User assigned boils down to:
 - You can re-use user assigned permissions in different apps
 
 EVENT GRID VS HUB
+- hub is for high throughput processing
+- grid is for routing and serverless apps
