@@ -13,7 +13,15 @@ There is some ambiguity around which version of the connection is going to be th
 
 ### Rdp
 
+I have tried rdp through the standard interface, however this just appears to open up the regular remote desktop interface which is not the intended usecase.
+
 ### Tunnelling
+
+### Other
+
+It is possible that opening this up as a container image on a developer's personal machine and then connecting it that way is going to be the preferred method. 
+
+This is still TBA however.
 
 ## Things we tried that didn't work
 
