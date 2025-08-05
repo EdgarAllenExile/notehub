@@ -13,3 +13,5 @@ Automatically adds all outstanding changes and commits. Combination of git add .
 git stash takes uncommited changes and 'stashes' them away for later use. This reverts them from your working copy.
 
 git stash pop will then reapply your most recent stash to your working branch.
+
+git stash apply does the same thing but does not clear the stash item from the stack.
