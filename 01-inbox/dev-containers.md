@@ -52,3 +52,7 @@ ssh username@domain1@contoso.com $remotePowershell
 ```
 
 And then for actually getting this to look like a thing that might be good and useful, we miiiiight be able to use the instructions in the 'use existing devcontainers.json' part of this document:`https://code.visualstudio.com/remote/advancedcontainers/develop-remote-host`
+
+### Workspaces
+
+Seems to me that in and around the easiest way to manage most of this stuff is through Workspaces. Obvs, if you could just attach cloned containers as volumes, that would be even better. But there are restrictions on that which is real annoying.
