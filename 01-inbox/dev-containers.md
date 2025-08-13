@@ -56,3 +56,5 @@ And then for actually getting this to look like a thing that might be good and u
 ### Workspaces
 
 Seems to me that in and around the easiest way to manage most of this stuff is through Workspaces. Obvs, if you could just attach cloned containers as volumes, that would be even better. But there are restrictions on that which is real annoying.
+
+Also workspaces are saved as actual files? I did not know that and am honestly not sure how I feel about it.
