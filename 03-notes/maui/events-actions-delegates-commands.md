@@ -8,6 +8,7 @@ I am including this here as its own seperate document, because honestly these th
 ## Actions
 
 ## Commands
+You need to pass a Command param to a button to trigger it on click
 
 ## Delegates
 
