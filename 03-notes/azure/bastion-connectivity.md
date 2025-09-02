@@ -76,3 +76,5 @@ ssh username@domain1@contoso.com $remotePowershell
 One thing to note on the above is that I think since I am hooking into local host, I thiiiiink there is a bit of a fuck around with $envs, I have made it work successfully by just replacing $userprofile with home dir ~ in regular user, but have not tried for admin user.
 
 If you are creating a new user, you must then also remember to put it into the docker-users group
+
+So I am not actually sure why this was such a fuck around, but I did eventually get this working by turning off the Administrator auth keys, so if we are going to do this again, USE THE REGULAR ACCOUNT VERSION
