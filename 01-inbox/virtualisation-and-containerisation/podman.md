@@ -20,4 +20,8 @@ I just run that shit on default thus far
 
 If using VS Code, simply hit the little settings thing and then toggle to podman
 
+## Advanced Configuration
 
+### Networking
+
+I am actually going to give this its own little page I think
