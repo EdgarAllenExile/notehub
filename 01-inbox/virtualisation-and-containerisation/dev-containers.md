@@ -59,7 +59,6 @@ Seems to me that in and around the easiest way to manage most of this stuff is t
 
 Also workspaces are saved as actual files? I did not know that and am honestly not sure how I feel about it.
 
-<<<<<<< HEAD
 ## Source Code Management
 
 I think the best way to manage this, is to create a dev container using the c# image, then attaching the source code using a volume mount
@@ -89,7 +88,7 @@ After all of that, you should be able to clone into a named vol. If not, refer d
 1. Do I create the Dev Container first then attach the cloned vol? Or do I clone the vol and then create a dev container to attach it to?
     1.1 Indirectly I think one of the blokes on Reddit has suggested clone vol first then open that vol in a dev container
     1.2 I am however trying it the other way around at the moment, if for no other reason than I would like to get a W on  the board
-=======
+
 ## What to Install in Dev Containers
 
 I think it is probably a given at this point that we will be running the c# / .net containers, but if we run the 9.0 sdk will that cover us for the lower versions? Probably not, is it annoying to switch versions for that reason only?
@@ -101,4 +100,3 @@ Extensions obvs
 I think it is better to go container volume -> container, but then possibly you might run into the issue with git clone not being successful, because the git credentials have not yet been shared with the container (ssh keys)
 
 If I had a new machine I would test this out.
->>>>>>> b16f473 (notes on how to mechanically actually manage starting the workflow)
