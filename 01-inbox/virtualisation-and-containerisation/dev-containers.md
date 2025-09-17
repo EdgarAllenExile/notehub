@@ -77,6 +77,8 @@ You then need to actually authenticate to DevOps for some reason. Open termianl 
 
 After all of that, you should be able to clone into a named vol. If not, refer docs: `https://docs.github.com/en/authentication/connecting-to-github-with-ssh/testing-your-ssh-connection`
 
+I think you might have to run this every day
+
 ## Questions and Thoughts
 
 ### Answers to the below
