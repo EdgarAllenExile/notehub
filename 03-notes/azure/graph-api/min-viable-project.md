@@ -1,5 +1,9 @@
 # Graph MVProject
 
+## 23092025 Updates
+
+Today I updated this to accept email addresses and return name and station back. This accepts a csv and returns a csv, but it is async and jesus christ that threw me for a little while there.
+
 ## Process
 
 First, declare all of the shit that you would usually do in a fairly standard app config or similar.
