@@ -1,5 +1,15 @@
 # Powershell Scripts
 
+## Copy From Remote Machine Via SSH
+
+```powershell Example
+scp <user@addresss>:<filepath-remote> <filepath-local>
+```
+
+```powershell What I Use
+scp -P 50022 pd57215@127.0.0.1:C:/Users/pd57215/Downloads/file ./Downloads/
+```
+
 ## Prepend Text to Files
 
 ```
