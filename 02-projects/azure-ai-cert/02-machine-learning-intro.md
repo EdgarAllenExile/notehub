@@ -37,3 +37,11 @@ Types of Supervised ML:
 Unsupervised ML is when you do not specify the label you want and only provide features. An unspervised algorithim will determine relationships between a variety of features in the data. 
 
 The most common type of unspervised ML is clustering, which identifies similarities in the observations based on features and sorts them into clusters. Clusters are kinda like multiclass classifications, but without defining the classes beforehand. 
+
+## Regression
+
+When you are doing regression you should:
+
+1. Split out a subset of the data (hold some to validate)
+2. Fit the algo to the data to a model, such as 'linear regression'
+3. Confirm your model using the held back data, the delta between known and predicted labels becomes your accuracy metric
