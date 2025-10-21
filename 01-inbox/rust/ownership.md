@@ -62,3 +62,43 @@ Passing a var ot a funciton is similar to just assigning it.
 This means that you cannot pass a variable to a function and then use it again after that function call, as it would be out of scope and dropped (if it's a string or other heap-type). 
 
 I feel this needs to be reiterated, if you pass a string to a function, that string is now gone. If you pass an INT though, you can then use it again. The string is stored on the heap and so by passing it, you have moved the pointer from one scope to another and dropped the first one. Conversely, the int is copied, since it is stored on the stack. This means that two versions of it exist on the stack and it can be used freely.
+
+### Return Vals
+
+Return vals transfer ownership, so if a function has a return value, then you can transfer ownership of that val once the function call hs been executed.
+
+## References
+
+On top of the above, you can also use the Reference feature to avoid transfering ownership all over the shop.
+
+> [!NOTE]
+> A reference is like a pointer, since it can be followed to access data, even though that data is owned by another var
+> However, it is guaranteed to point ot a valid value
+
+You can use a reference by prefixing an ampersand to the value. There is also dereferencing, but who the fuuuuck knows what that is.
+
+I think you need to set a function to accept a reference to a string, it's not enough to set it to be a string and then pass a reference.
+
+The act of using references is called borrowing. This is because much like regular ownership, if you use something but don't own it, you are borrowing it from the person that does own it.
+
+### Mutable References
+
+By default, references are immutable. However you can create mutable references and then call the `change` function, which will mutate the value that has been borrowed.
+
+For consistency, you cannot have more than one mutable reference to a value. They're effectively singletons.
+
+This prevents data races.
+
+You can have multiple mutable referencs in differnet scopes, because of the enforced scope specificity in Rust, the compiler is able to see if you have made an error and start screaming about it.
+
+A new scope is created basically any time that you add curly brackets.
+
+### Reference Ownership
+
+Rust avoids ownership errors by ensuring that references cannot be returned in situations that the underlying data would go out of scope. This includes, for example, a function returning a reference to a value that was set within the function. The value itself only exists in scope within the function, so returning a reference to it would mean that it does not exist once the function has run. 
+
+If you want to return a val, you must transfer ownership of it, not borrow it. You cannot sell an item that you are borrowing.
+
+## Slices
+
+A slice is a reference to an element in a collection. It is a type of reference so it does not actually transfer ownership.
