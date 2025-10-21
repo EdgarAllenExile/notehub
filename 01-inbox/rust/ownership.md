@@ -102,3 +102,12 @@ If you want to return a val, you must transfer ownership of it, not borrow it. Y
 ## Slices
 
 A slice is a reference to an element in a collection. It is a type of reference so it does not actually transfer ownership.
+
+You can create a slice of a string by doing the following:
+`let var = refVar[start..end];`
+
+or in actual code
+
+`let hello = &s[0..5];` where `s = String::from("hello world");`
+
+String literals in Rust are immutable and that is becausethey are actually slices of an entire string. The data type of both a slice and a string literal are exactly the same (`&str`).
