@@ -27,3 +27,11 @@ They then make the data / function more meaningful by labelling the data / creat
 If you want to print things from the debug output, you can decorate your struct with the 'outer attribute' `#[derive(Debug)]`, just stick that at the top of your initial struct declaration and you can print it out with the printlin! macro no worries.
 
 if you are thinking about console.writeline, then you probably actually want to use dbg! macro.
+
+## Methods
+
+Methods are functions that live in structs (or enums or traits). They must be passed `self` as a first param which represents the instance of the struct that the method is being called on.
+
+You don't define this within the actual struct itself, but rather you add an `impl` or implementation block, which extends the struct. 
+
+You can use methods to create your own getters. If you mark the field as private and the method as public, then you have made a fancy read only access getter. 
