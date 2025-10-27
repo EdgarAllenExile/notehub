@@ -36,6 +36,6 @@ Oh, yes there is. It's `other`, which can just go at the end and be a default. O
 
 ## If Let
 
+`if let` allows you to combine if and let statements into a streamline way to handle vals that match a pattern. I think I will need to have a go at actually doing this, but effectively, it can be thought of as syntactic sugar on a match statement (without the requirement to check everything).
 
-
-
+There is also a plain old if statement, and that works how you would think it does.
