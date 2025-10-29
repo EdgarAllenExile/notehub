@@ -27,3 +27,26 @@ They provide additional functionality that are to be shared between multiple oth
 Packages are bundles of crates. They must contain the `cargo.toml` file, which describes how to build a crate. 
 
 Packages can contain multiple binary crates, but only a single library crate.
+
+## Modules, Scope and Privacy
+
+From the perspective of the compiler, modules work like this:
+
+- Start in the root
+    - Usually `src/lib.rs` (for library crates) or `src/main.rs` (for binary crates)
+- Check for declared modules
+    - Declared in the above files as `mod {name}`
+    - It will then find the module code in:
+        - inline, declared within curlies after mod name declaration
+        - in the file `src/{name}.rs`
+        - in the file `src/{name}/mod.rs`
+- Then check for sub-modules
+    - Once it is pointed at a module, it will find sub-modules, as declared in the module
+    - It looks in the following:
+        - inline, declared within curlies after mod name declaration
+        - in the file `src/{name}/{sub}.rs`
+        - in the file `src/{name}/{sub}/mod.rs`
+- Then it finds the actual code and can be referred to elsewhere
+    - if you declare it `pub` you can find it anywhere, where as `mod` are private
+- Once you are ready to use your module
+    - just call use, then it will auto complete the namespace so you can use the objects in code without calling manually
